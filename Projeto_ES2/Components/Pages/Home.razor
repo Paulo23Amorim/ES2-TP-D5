@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Projeto_ES2.Components.Models
+@inject HttpClient Http
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+@if (utilizadores == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @foreach (var utilizador in utilizadores)
+    {
+        <p>@utilizador.nome</p>    
+    } 
+}
+
+@code
+{
+    Utilizador[] utilizadores;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        
+        utilizadores = await Http.GetFromJsonAsync<Utilizador[]>("/api/Utilizador");
+    }
+}
