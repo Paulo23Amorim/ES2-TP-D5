@@ -2,6 +2,7 @@
 
 public enum TipoUtilizador
 {
-    CLIENTE,
-    ADMIN
+    Cliente,
+    Admin,
+    UserManager
 }

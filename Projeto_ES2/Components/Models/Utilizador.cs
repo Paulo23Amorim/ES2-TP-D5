@@ -12,4 +12,13 @@ public class Utilizador
     public String password { get; set; }
     
     public TipoUtilizador TipoUtilizador { get; set; }
-}
+
+    public Utilizador(Guid userId, string nome, string email, string password, TipoUtilizador tipoUtilizador)
+    {
+        user_id = userId;
+        this.nome = nome;
+        this.email = email;
+        this.password = password;
+        TipoUtilizador = tipoUtilizador;
+    }
+} 
