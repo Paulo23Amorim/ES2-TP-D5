@@ -1,6 +1,9 @@
-﻿<Router AppAssembly="typeof(Program).Assembly">
+﻿@namespace Projeto_ES2.Components.Pages
+@using Projeto_ES2.Components.Layout
+
+<Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)"/>
+        <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)"/>
         <FocusOnNavigate RouteData="routeData" Selector="h1"/>
     </Found>
 </Router>

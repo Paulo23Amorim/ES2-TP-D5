@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Projeto_ES2.Components;
 using Projeto_ES2.Components.Data;
+using Projeto_ES2.Components.Pages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Sandbox API",
+        Title = "Gestor de Ativos Financeiros",
         Version = "v1",
         Description = "API para a aplicação Blazor Sandbox"
     });
