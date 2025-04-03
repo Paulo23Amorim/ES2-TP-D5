@@ -12,6 +12,8 @@ public class Utilizador
     public String password { get; set; }
     
     public TipoUtilizador TipoUtilizador { get; set; }
+    
+    public Utilizador() { }
 
     public Utilizador(Guid userId, string nome, string email, string password, TipoUtilizador tipoUtilizador)
     {
