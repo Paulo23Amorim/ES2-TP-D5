@@ -260,5 +260,26 @@ paket-files/
 __pycache__/
 *.pyc
 
+# Pastas de compilação
+bin/
+obj/
+
+# Ficheiros compilados
+*.dll
+*.exe
+*.cache
+
+# Ficheiros do Rider
+*.nugget.info
+
+# Static Web Assets
+staticwebassets.*
+
+# Ignorar configurações locais do Visual Studio/Rider
+.vscode/
+
+
+# Ignorar ficheiros de configuração temporários
 appsettings.Development.json
-appsettings.json
+applicationhost.config
+
