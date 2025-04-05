@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Projeto_ES2.Components;
 using Projeto_ES2.Components.Data;
 using Projeto_ES2.Components.Pages;
+using Projeto_ES2.Components.Layout;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44369/") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5029/") });//changed port
 
 var app = builder.Build();
 

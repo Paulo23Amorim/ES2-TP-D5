@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Projeto_es2/1.0.0": {
+      "Projeto_ES2/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.4",
           "Microsoft.EntityFrameworkCore.Design": "8.0.4",
@@ -15,7 +15,7 @@
           "Swashbuckle.AspNetCore": "8.1.0"
         },
         "runtime": {
-          "Projeto_es2.dll": {}
+          "Projeto_ES2.dll": {}
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -544,7 +544,7 @@
     }
   },
   "libraries": {
-    "Projeto_es2/1.0.0": {
+    "Projeto_ES2/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

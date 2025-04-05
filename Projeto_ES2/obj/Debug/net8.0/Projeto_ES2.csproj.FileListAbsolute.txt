@@ -381,4 +381,4 @@ C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\refint\Proje
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\Projeto_ES2.pdb
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\Projeto_ES2.genruntimeconfig.cache
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\ref\Projeto_ES2.dll
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\Projeto_.0319C9C3.Up2Date
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2\obj\Debug\net8.0\Projeto_.82FA49E3.Up2Date
