@@ -6,18 +6,23 @@ using Projeto_ES2.Components.Layout;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configuração de logging para capturar logs detalhados
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); // Adiciona o log no console
+builder.Logging.SetMinimumLevel(LogLevel.Debug); // Define o nível mínimo de log
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// Configuração do DbContext com PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// Adicionar controllers de API
+// Configuração dos controllers
 builder.Services.AddControllers();
 
-// Adicionar serviços do Swagger
+// Configuração do Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -29,12 +34,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Adicionar HttpClient
 builder.Services.AddHttpClient();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5029/") });//changed port
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuração da pipeline de requisições
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -46,7 +52,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -54,11 +59,12 @@ else
 app.MapControllers();
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+app.UseDeveloperExceptionPage(); // Garante que erros são expostos durante o desenvolvimento
 
 app.Run();

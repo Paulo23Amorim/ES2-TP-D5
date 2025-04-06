@@ -1,4 +1,4 @@
-﻿using Projeto_ES2.Components.Data; 
+using Projeto_ES2.Components.Data; 
 using Projeto_ES2.Components.Models; 
 using Microsoft.AspNetCore.Mvc; 
 using Microsoft.EntityFrameworkCore;
