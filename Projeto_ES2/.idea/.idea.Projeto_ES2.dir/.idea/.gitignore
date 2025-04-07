@@ -1,0 +1,43 @@
+# Rider IDE
+.idea/
+*.sln.iml
+*.DotSettings.user
+/httpRequests/
+
+# Rider workspace/config files
+workspace.xml
+shelf/
+projectSettingsUpdater.xml
+contentModel.xml
+modules.xml
+.idea.*.iml
+
+# Datasources (local DB configs etc)
+dataSources/
+dataSources.local.xml
+
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.app
+*.pdb
+
+# User-specific files
+*.user
+*.vspscc
+*.vssscc
+
+# Entity Framework Migrations (optional, se quiser ignorar eles)
+# Migrations/
+
+# Rider / .NET-specific cache
+*.dbmdl
+*.cache
+*.log
+*.suo
+
+# Others
+.vs/
+

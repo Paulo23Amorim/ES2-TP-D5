@@ -2,31 +2,49 @@
 @using Projeto_ES2.Components.Models
 @inject HttpClient Http
 
-<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<PageTitle>Início</PageTitle>
 
-Welcome to your new app.
-@if (utilizadores == null)
+<h1>Bem-vindo ao Sistema de Gestão de Ativos Financeiros</h1>
+
+<p>Gerencie seus ativos, investimentos e finanças com facilidade.</p>
+
+@if (loading)
 {
-    <p>Loading...</p>
+    <p>A carregar os seus dados financeiros...</p>
 }
 else
 {
-    @foreach (var utilizador in utilizadores)
-    {
-        <p>@utilizador.nome</p>    
-    } 
-}
+    <div class="finance-summary">
+        <h2>Resumo Financeiro</h2>
+        <p><strong>Último Investimento:</strong> @ultimoInvestimento</p>
+    </div>
 
-@code
-{
-    Utilizador[] utilizadores = new Utilizador[0];
+@code {
+    private bool loading = true;
+    private string ultimoInvestimento = "Nenhum investimento recente";
 
-    
     protected override async Task OnInitializedAsync()
     {
-        
-        utilizadores = await Http.GetFromJsonAsync<Utilizador[]>("/api/Utilizador");
+        await CarregarDadosFinanceiros();
     }
+
+    private async Task CarregarDadosFinanceiros()
+    {
+        try
+        {
+// teste
+            await Task.Delay(1000); // Simulando carregamento
+            ultimoInvestimento = "Ações da Tesla - 500€";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar dados: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}
 }

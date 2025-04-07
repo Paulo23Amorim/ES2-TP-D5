@@ -6,14 +6,13 @@ namespace Projeto_ES2.Components.Models;
 public class Invoice
 {
     [Key]
-    public Guid id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("Utilizador")]
-    public Guid utilizador_id { get; set; }
+    public Guid UtilizadorId { get; set; }
     public required Utilizador Utilizador { get; set; }
-
-    public required string tipo { get; set; }
-    public DateTime data_inicio { get; set; }
-    public DateTime data_fim { get; set; }
-    public string? descricao { get; set; }
+    public required string Tipo { get; set; }
+    public DateTime DataInicio { get; set; }
+    public DateTime DataFim { get; set; }
+    public string? Descricao { get; set; }
 }

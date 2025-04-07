@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Projeto_ES2.Components;
 using Projeto_ES2.Components.Data;
 using Projeto_ES2.Components.Services;
+using Projeto_ES2.Components.Pages;
+using Projeto_ES2.Components.Layout;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Sandbox API",
+        Title = "Gestor de Ativos Financeiros",
         Version = "v1",
         Description = "API para a aplicação Blazor Sandbox"
     });
@@ -36,7 +37,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Adicionar HttpClient
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44369/") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5029/") });//changed port
 
 
 //Services

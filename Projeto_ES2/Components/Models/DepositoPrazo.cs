@@ -6,15 +6,15 @@ namespace Projeto_ES2.Components.Models;
 public class DepositoPrazo
 {
     [Key]
-    public Guid id { get; set; }
+    public Guid Id { get; set; } //PascalCase id -> Id
 
     [ForeignKey("AtivoFinanceiro")]
-    public Guid ativo_id { get; set; }
+    public Guid AtivoId { get; set; } //ativo_id -> AtivoId
     public required AtivoFinanceiro AtivoFinanceiro { get; set; }
 
-    public decimal valor_inicial { get; set; }
-    public required string banco { get; set; }
-    public required string numero_conta { get; set; }
-    public required string titulares { get; set; }
-    public float taxa_juro_anual { get; set; }
+    public decimal ValorInicial { get; set; }
+    public required string Banco { get; set; }
+    public required string NumeroConta { get; set; }
+    public required string Titulares { get; set; }
+    public decimal TaxaJuroAnual { get; set; }
 }

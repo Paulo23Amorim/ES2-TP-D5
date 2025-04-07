@@ -6,12 +6,12 @@ namespace Projeto_ES2.Components.Models;
 public class Juros
 {
     [Key]
-    public Guid id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("FundoInvestimento")]
-    public Guid fundo_id { get; set; }
+    public Guid FundoId { get; set; }
     public required FundoInvestimento FundoInvestimento { get; set; }
 
-    public int mes_referencia { get; set; }
-    public float taxa_juro { get; set; }
+    public int MesReferencia { get; set; }
+    public decimal TaxaJuro { get; set; }
 }
