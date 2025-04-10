@@ -20,7 +20,6 @@ public class AuthService
 
     public bool Register(Utilizador novo)
     {
-        // Usa u.Email == novo.Email para a expressão correta
         if (_context.Utilizadores.Any(u => u.email == novo.email))
             return false;
 

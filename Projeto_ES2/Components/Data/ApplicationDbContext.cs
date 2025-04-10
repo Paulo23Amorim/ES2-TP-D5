@@ -22,12 +22,11 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
-        // Configuração de chaves estrangeiras e relacionamentos
         modelBuilder.Entity<AtivoFinanceiro>()
             .HasOne(a => a.Utilizador)
             .WithMany(u => u.AtivosFinanceiros)
             .HasForeignKey(a => a.UtilizadorId)
-            .OnDelete(DeleteBehavior.Cascade); // Define o comportamento de exclusão
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Invoice>()
             .HasOne(i => i.Utilizador)
@@ -59,6 +58,5 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
             .HasOne(i => i.AtivoFinanceiro)
             .WithMany(a => a.Impostos) 
             .HasForeignKey(i => i.AtivoId);
-
     }
 }
