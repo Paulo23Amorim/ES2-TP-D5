@@ -14,7 +14,7 @@ public class AtivoFinanceiro
 
     public TipoAtivoFinanceiro Tipo { get; set; }
 
-    [Required] // Obrigatório
+    [Required] 
     [StringLength(100)]
     public required string Nome { get; set; }
     

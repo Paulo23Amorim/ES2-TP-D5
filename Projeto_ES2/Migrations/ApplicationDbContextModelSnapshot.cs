@@ -221,29 +221,26 @@ namespace Projeto_es2.Migrations
 
             modelBuilder.Entity("Projeto_ES2.Components.Models.Utilizador", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("user_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<int>("Tipo")
+                    b.Property<int>("TipoUtilizador")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("user_id");
 
                     b.ToTable("Utilizadores");
                 });

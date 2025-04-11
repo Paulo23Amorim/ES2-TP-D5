@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wYdHCMKxicU=",
+  "dgSpecHash": "qAKBteFQ53Zck1CR+CwPQ4rG1k6bRYlrBFqRNKipVkni62h4wPlLYZ/IYVVo0RoXO+pBSqyWNanvf9vdZ9RwZA==",
   "success": true,
-  "projectFilePath": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_es2.csproj",
+  "projectFilePath": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_ES2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

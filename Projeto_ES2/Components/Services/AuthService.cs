@@ -1,4 +1,5 @@
-﻿using Projeto_ES2.Components.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Projeto_ES2.Components.Data;
 using Projeto_ES2.Components.Models;
 
 namespace Projeto_ES2.Components.Services;
@@ -12,11 +13,12 @@ public class AuthService
         _context = context;
     }
 
-    public Utilizador? Login(string email, string password)
+    public async Task<Utilizador?> LoginAsync(string email, string password)
     {
-        return _context.Utilizadores
-            .FirstOrDefault(u => u.email == email && u.password == password);
+        return await _context.Utilizadores
+            .FirstOrDefaultAsync(u => u.email == email && u.password == password);
     }
+
 
     public bool Register(Utilizador novo)
     {
