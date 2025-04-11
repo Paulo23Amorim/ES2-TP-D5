@@ -1,4 +1,6 @@
-﻿namespace Projeto_ES2.Controllers;
+﻿using Projeto_ES2.Components.Pages.DTOs;
+
+namespace Projeto_ES2.Controllers;
 
 // Controllers/AuthController.cs
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +19,15 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] Utilizador user)
+    public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
     {
-        var result = _authService.Login(user.email, user.password);
-        if (result == null)
-            return Unauthorized("Email ou password inválidos.");
+        var user = await _authService.LoginAsync(request.Email, request.Password);
+        if (user == null)
+            return Unauthorized();
 
-        return Ok(result);
+        return Ok(user); // ou token/jwt/etc.
     }
+
 
     [HttpPost("register")]
     public IActionResult Register([FromBody] Utilizador novo)

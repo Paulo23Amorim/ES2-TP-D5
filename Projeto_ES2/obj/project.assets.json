@@ -2722,9 +2722,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_es2.csproj",
-      "projectName": "Projeto_es2",
-      "projectPath": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_es2.csproj",
+      "projectUniqueName": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_ES2.csproj",
+      "projectName": "Projeto_ES2",
+      "projectPath": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\Projeto_ES2.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
       "outputPath": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\",
       "projectStyle": "PackageReference",
@@ -2753,11 +2753,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
