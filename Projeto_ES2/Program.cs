@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Projeto_ES2.Components.Data;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole(); // Adiciona o log no console
 builder.Logging.SetMinimumLevel(LogLevel.Debug); // Define o nível mínimo de log
+
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -37,7 +40,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Adicionar HttpClient
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5029/") });//changed port
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5029/") });
 
 
 //Services

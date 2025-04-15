@@ -3,6 +3,7 @@
 @using Projeto_ES2.Components.Models
 @inject NavigationManager Navigation
 @inject HttpClient Http
+@inject IJSRuntime JS
 
 <h3 class="text-xl font-bold mb-4">Login</h3>
 
@@ -37,42 +38,46 @@ private string loginError = string.Empty;
 
 private async Task HandleLogin()
 {
-loginError = string.Empty;
+    loginError = string.Empty;
 
-var loginRequest = new Utilizador
-{
-email = loginModel.Email,
-password = loginModel.Password
-};
+    var loginRequest = new Utilizador
+    {
+        email = loginModel.Email,
+        password = loginModel.Password
+    };
 
-try
-{
-var response = await Http.PostAsJsonAsync("api/Auth/login", loginRequest);
-if (response.IsSuccessStatusCode)
-{
-var user = await response.Content.ReadFromJsonAsync<Utilizador>();
-Console.WriteLine($"Login bem-sucedido: {user?.nome}");
-Navigation.NavigateTo("/");
-}
-else
-{
-loginError = await response.Content.ReadAsStringAsync();
-Console.WriteLine($"Erro ao autenticar: {loginError}");
-}
-}
-catch (Exception ex)
-{
-loginError = "Erro na ligação com o servidor.";
-Console.WriteLine("Erro ao chamar API: " + ex.Message);
-}
+    try
+    {
+        var response = await Http.PostAsJsonAsync("api/Auth/login", loginRequest);
+        if (response.IsSuccessStatusCode)
+        {
+            var user = await response.Content.ReadFromJsonAsync<Utilizador>();
+            if (user is not null)
+            {
+                await JS.InvokeVoidAsync("localStorage.setItem", "utilizadorId", user.user_id.ToString());
+                Console.WriteLine($"Login bem-sucedido: {user?.nome}");
+                Navigation.NavigateTo("/");
+            }
+        }
+        else
+        {
+            loginError = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Erro ao autenticar: {loginError}");
+        }
+    }
+    catch (Exception ex)
+    {
+        loginError = "Erro na ligação com o servidor.";
+        Console.WriteLine("Erro ao chamar API: " + ex.Message);
+    }
 }
 
 public class LoginModel
 {
-[Required(ErrorMessage = "O email é obrigatório")]
-public string Email { get; set; } = string.Empty;
+    [Required(ErrorMessage = "O email é obrigatório")]
+    public string Email { get; set; } = string.Empty;
 
-[Required(ErrorMessage = "A password é obrigatória")]
-public string Password { get; set; } = string.Empty;
+    [Required(ErrorMessage = "A password é obrigatória")]
+    public string Password { get; set; } = string.Empty;
 }
 }

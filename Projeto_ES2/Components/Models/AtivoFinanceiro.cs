@@ -10,7 +10,7 @@ public class AtivoFinanceiro
 
     [ForeignKey("Utilizador")]
     public Guid UtilizadorId { get; set; }
-    public required Utilizador Utilizador { get; set; }
+    public Utilizador? Utilizador { get; set; }
 
     public TipoAtivoFinanceiro Tipo { get; set; }
 

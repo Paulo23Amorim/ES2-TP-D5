@@ -1,18 +1,18 @@
-using Projeto_ES2.Components.Data; 
-using Projeto_ES2.Components.Models; 
-using Microsoft.AspNetCore.Mvc; 
+using Projeto_ES2.Components.Data;
+using Projeto_ES2.Components.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Projeto_ES2.Components.DTOs;
 
 namespace Projeto_ES2.Controllers;
 
-[Route("api/[controller]")] 
-[ApiController] 
+[Route("api/[controller]")]
+[ApiController]
+public class AtivoFinanceiroController : ControllerBase
+{
+    private readonly ApplicationDbContext _context;
 
-public class AtivoFinanceiroController : ControllerBase {
-    
-private readonly ApplicationDbContext _context;
-
-public AtivoFinanceiroController(ApplicationDbContext context)
+    public AtivoFinanceiroController(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -21,22 +21,32 @@ public AtivoFinanceiroController(ApplicationDbContext context)
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AtivoFinanceiro>>> GetAtivosFinanceiros()
     {
-        return await _context.AtivosFinanceiros.ToListAsync();
+        return await _context.AtivosFinanceiros
+            .Include(a => a.DepositoPrazo)
+            .Include(a => a.FundoInvestimento)
+            .Include(a => a.ImovelArrendado)
+            .ToListAsync();
     }
 
     // READ (Obter um único ativo financeiro)
     [HttpGet("{id}")]
     public async Task<ActionResult<AtivoFinanceiro>> GetAtivoFinanceiro(Guid id)
     {
-        var ativo = await _context.AtivosFinanceiros.FindAsync(id);
+        var ativo = await _context.AtivosFinanceiros
+            .Include(a => a.DepositoPrazo)
+            .Include(a => a.FundoInvestimento)
+            .Include(a => a.ImovelArrendado)
+            .FirstOrDefaultAsync(a => a.Id == id);
+
         if (ativo == null)
         {
             return NotFound();
         }
+
         return ativo;
     }
 
-    // CREATE (Criar um novo ativo financeiro)
+    // CREATE (Criar um novo ativo financeiro direto)
     [HttpPost]
     public async Task<ActionResult<AtivoFinanceiro>> CreateAtivoFinanceiro(AtivoFinanceiro ativo)
     {
@@ -50,6 +60,85 @@ public AtivoFinanceiroController(ApplicationDbContext context)
 
         return CreatedAtAction(nameof(GetAtivoFinanceiro), new { id = ativo.Id }, ativo);
     }
+
+    // CREATE COM DTO (p formulário do frontend)
+    [HttpPost("novo")]
+public async Task<IActionResult> CriarComDto([FromBody] AtivoFinanceiroNovoDTO dto)
+{
+    if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
+    // Tenta obter o ID do utilizador autenticado (assumindo que usas JWT ou Identity)
+    var userIdString = User.FindFirst("sub")?.Value ?? User.FindFirst("id")?.Value;
+
+    if (userIdString == null || !Guid.TryParse(userIdString, out var utilizadorId))
+        return Unauthorized("Utilizador não autenticado ou ID inválido.");
+
+    var ativo = new AtivoFinanceiro
+    {
+        Id = Guid.NewGuid(),
+        UtilizadorId = utilizadorId, // 🔐 Pegando o ID do utilizador logado
+        Nome = dto.Nome,
+        Tipo = dto.Tipo,
+        DataInicio = dto.DataInicio,
+        DataFim = dto.DataInicio.AddMonths(dto.DuracaoMeses),
+        Imposto = dto.Imposto
+    };
+
+    // Adiciona os dados específicos conforme o tipo
+    switch (dto.Tipo)
+    {
+        case TipoAtivoFinanceiro.DepositoPrazo:
+            if (dto.Deposito is not null)
+            {
+                ativo.DepositoPrazo = new DepositoPrazo
+                {
+                    Id = Guid.NewGuid(),
+                    ValorInicial = dto.Deposito.Valor,
+                    Banco = dto.Deposito.Banco,
+                    NumeroConta = dto.Deposito.NumeroConta,
+                    Titulares = "Titular Padrão", // ou podes expandir no DTO
+                    TaxaJuroAnual = dto.Deposito.TaxaJuro,
+                    AtivoFinanceiro = ativo
+                };
+            }
+            break;
+
+        case TipoAtivoFinanceiro.FundoInvestimento:
+            if (dto.Fundo is not null)
+            {
+                ativo.FundoInvestimento = new FundoInvestimento
+                {
+                    Id = Guid.NewGuid(),
+                    MontanteInvestido = dto.Fundo.Montante,
+                    TaxaJuroPadrao = dto.Fundo.TaxaJuroInicial,
+                    AtivoFinanceiro = ativo
+                };
+            }
+            break;
+
+        case TipoAtivoFinanceiro.ImovelArrendado:
+            if (dto.Imovel is not null)
+            {
+                ativo.ImovelArrendado = new ImovelArrendado
+                {
+                    Id = Guid.NewGuid(),
+                    Localizacao = dto.Imovel.Localizacao,
+                    ValorImovel = dto.Imovel.Valor,
+                    ValorRenda = dto.Imovel.Renda,
+                    ValorCondominio = dto.Imovel.Condominio,
+                    DespesasAnuais = dto.Imovel.Despesas,
+                    AtivoFinanceiro = ativo
+                };
+            }
+            break;
+    }
+
+    _context.AtivosFinanceiros.Add(ativo);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetAtivoFinanceiro), new { id = ativo.Id }, ativo);
+}
 
     // UPDATE (Atualizar um ativo financeiro)
     [HttpPut("{id}")]
@@ -97,7 +186,7 @@ public AtivoFinanceiroController(ApplicationDbContext context)
         return NoContent();
     }
 
-    // Método auxiliar para verificar se um ativo financeiro existe
+    // Método auxiliar
     private bool AtivoFinanceiroExists(Guid id)
     {
         return _context.AtivosFinanceiros.Any(e => e.Id == id);

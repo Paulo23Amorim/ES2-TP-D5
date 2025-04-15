@@ -1,0 +1,68 @@
+﻿@page "/AtivoForm"
+<h3>AtivoForm</h3>
+
+@using Projeto_ES2.Components.Models
+
+<EditForm Model="Ativo" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Nome:</label>
+        <InputText @bind-Value="Ativo.Nome" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Tipo:</label>
+        <InputSelect @bind-Value="Ativo.Tipo" class="form-control">
+            @foreach (var tipo in Enum.GetValues<TipoAtivoFinanceiro>())
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="mb-3">
+        <label>Data de Início:</label>
+        <InputDate @bind-Value="Ativo.DataInicio" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Data de Fim:</label>
+        <InputDate @bind-Value="Ativo.DataFim" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Imposto (%):</label>
+        <InputNumber @bind-Value="Ativo.Imposto" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">@BotaoTexto</button>
+    <button type="button" class="btn btn-secondary ms-2" @onclick="Cancelar">Cancelar</button>
+</EditForm>
+
+@code {
+    [Parameter, EditorRequired]
+    public AtivoFinanceiro Ativo { get; set; } = new()
+    {
+        Nome = "",
+        Tipo = TipoAtivoFinanceiro.DepositoPrazo,
+        DataInicio = DateTime.Today,
+        DataFim = DateTime.Today.AddYears(1),
+        Imposto = 0
+    };
+    
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback CancelarCallback { get; set; }
+
+    [Parameter]
+    public string BotaoTexto { get; set; } = "Guardar";
+
+    private void Cancelar()
+    {
+        CancelarCallback.InvokeAsync();
+    }
+}
