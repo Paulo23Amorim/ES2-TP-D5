@@ -6,10 +6,10 @@ namespace Projeto_ES2.Components.Models;
 public class DepositoPrazo
 {
     [Key]
-    public Guid Id { get; set; } //PascalCase id -> Id
+    public Guid Id { get; set; } 
 
     [ForeignKey("AtivoFinanceiro")]
-    public Guid AtivoId { get; set; } //ativo_id -> AtivoId
+    public Guid AtivoId { get; set; } 
     public required AtivoFinanceiro AtivoFinanceiro { get; set; }
 
     public decimal ValorInicial { get; set; }

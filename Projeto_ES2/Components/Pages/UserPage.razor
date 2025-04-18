@@ -1,0 +1,34 @@
+﻿@page "/user"
+@inject NavigationManager NavigationManager
+
+<h2>Bem-vindo, @UserName!</h2>
+
+<p>Aqui podes visualizar e gerir os teus dados.</p>
+
+<button class="btn btn-primary" @onclick="Logout">Terminar Sessão</button>
+
+@code {
+    private string UserName = "Utilizador"; // este valor pode vir de autenticação real
+
+    protected override void OnInitialized()
+    {
+        if (!IsUserAuthenticated())
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            UserName = "João Silva";
+        }
+    }
+
+    private bool IsUserAuthenticated()
+    {
+        return true;
+    }
+
+    private void Logout()
+    {
+        NavigationManager.NavigateTo("/login", true);
+    }
+}

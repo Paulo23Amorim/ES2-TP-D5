@@ -34,7 +34,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
             .HasForeignKey(i => i.UtilizadorId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        modelBuilder.Entity<DepositoPrazo>()
+        modelBuilder.Entity<DepositoPrazo>().ToTable("DepositosPrazo")
             .HasOne(d => d.AtivoFinanceiro)
             .WithOne(a => a.DepositoPrazo)
             .HasForeignKey<DepositoPrazo>(d => d.AtivoId);

@@ -2,7 +2,8 @@
 
 public enum TipoAtivoFinanceiro
 {
-    DepositoPrazo,
-    FundoInvestimento,
-    ImovelArrendado
+    DepositoPrazo = 0,
+    FundoInvestimento = 1,
+    ImovelArrendado = 2
 }
+

@@ -26,7 +26,7 @@
     <button type="submit" class="btn btn-success">Registar</button>
 </EditForm>
 
-<p class="mt-3">Já tens conta? <a href="/login">Inicia sessão aqui</a></p>
+<p class="mt-3">Já tens conta? <a href="/userlogin">Faz login aqui</a></p>
 
 @code {
     private RegisterModel registerModel = new();
@@ -37,7 +37,7 @@
         Console.WriteLine($"Registo com {registerModel.Email} / {registerModel.Password}");
 
         // Exemplo de redirecionamento após registo
-        Navigation.NavigateTo("/login");
+        Navigation.NavigateTo("/userlogin");
     }
 
     public class RegisterModel

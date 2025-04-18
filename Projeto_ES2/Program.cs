@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configuração de logging para capturar logs detalhados
 builder.Logging.ClearProviders();
-builder.Logging.AddConsole(); // Adiciona o log no console
-builder.Logging.SetMinimumLevel(LogLevel.Debug); // Define o nível mínimo de log
+builder.Logging.AddConsole(); 
+builder.Logging.SetMinimumLevel(LogLevel.Debug); 
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -37,7 +37,12 @@ builder.Services.AddSwaggerGen(c =>
 
 // Adicionar HttpClient
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5029/") });//changed port
+builder.Services.AddHttpClient("API", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:5029/");
+});
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("API"));
+
 
 
 //Services
