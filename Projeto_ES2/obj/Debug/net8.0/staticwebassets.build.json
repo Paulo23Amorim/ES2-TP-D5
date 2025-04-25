@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PVHdHouacGsyb89ip+/AqxmgYNWyiRZMf+wQrRHNFZY=",
+  "Hash": "BkURjH55I8QJxPWcXum/3Zh26+LVyIzI+UFIx1jR7qA=",
   "Source": "Projeto_ES2",
   "BasePath": "_content/Projeto_ES2",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Projeto_ES2\\wwwroot",
       "Source": "Projeto_ES2",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
       "BasePath": "_content/Projeto_ES2",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Projeto_ES2.styles.css",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Projeto_ES2.styles.css",
       "SourceId": "Projeto_ES2",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "Projeto_ES2.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Projeto_ES2.styles.css"
+      "OriginalItemSpec": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Projeto_ES2.styles.css"
     },
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Projeto_ES2.bundle.scp.css",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Projeto_ES2.bundle.scp.css",
       "SourceId": "Projeto_ES2",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "Projeto_ES2.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Projeto_ES2.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Projeto_ES2.bundle.scp.css"
     },
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\app.css",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\app.css",
       "SourceId": "Projeto_ES2",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "Projeto_ES2",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Projeto_ES2",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\favicon.png",
+      "Identity": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\favicon.png",
       "SourceId": "Projeto_ES2",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\4Ano\\ESII\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
+      "ContentRoot": "C:\\Universidade\\4ANO\\SEMESTRE2\\ESII\\TRABALHO_PRATICO\\ES2-TP-D5\\Projeto_ES2\\wwwroot\\",
       "BasePath": "_content/Projeto_ES2",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

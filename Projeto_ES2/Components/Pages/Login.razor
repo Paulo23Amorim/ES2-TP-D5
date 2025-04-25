@@ -11,7 +11,7 @@
 <div class="alert alert-danger">@loginError</div>
 }
 
-<EditForm Model="loginModel" OnValidSubmit="HandleLogin" @formname="loginForm">
+<EditForm Model="loginModel" OnValidSubmit="HandleLogin" FormName="loginForm">
 
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -52,7 +52,8 @@ if (response.IsSuccessStatusCode)
 {
 var user = await response.Content.ReadFromJsonAsync<Utilizador>();
 Console.WriteLine($"Login bem-sucedido: {user?.nome}");
-Navigation.NavigateTo("/");
+Navigation.NavigateTo("/hello-world");
+
 }
 else
 {
