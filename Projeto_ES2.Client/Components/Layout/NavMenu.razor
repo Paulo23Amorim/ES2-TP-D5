@@ -1,0 +1,90 @@
+﻿@using Blazored.LocalStorage
+@using Microsoft.AspNetCore.Components.Authorization
+@using Projeto_ES2.Client.Services
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager Navigation
+
+<div class="top-row ps-3 navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Projeto_ES2</a>
+        <button class="navbar-toggler" @onclick="ToggleMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleMenu">
+    <nav class="flex-column">
+
+        <!-- Home (sempre visível) -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill"></span> Home
+            </NavLink>
+        </div>
+
+        <AuthorizeView>
+            <NotAuthorized>
+                <!-- Usuário não autenticado: Login + Registo -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="login">
+                        <span class="bi bi-box-arrow-in-right"></span> Login
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="register">
+                        <span class="bi bi-person-plus"></span> Registar-se
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+
+            <Authorized Context="user">
+                <!-- Usuário autenticado: Gerir Ativos + Logout -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="ativos" Match="NavLinkMatch.Prefix">
+                        <span class="bi bi-list-ul"></span> Gerir Ativos
+                    </NavLink>
+                </div>
+
+                <!-- Apenas para Admin/UserManager: Gerir Usuários -->
+                <AuthorizeView Roles="Admin,UserManager">
+                    <Authorized Context="admin">
+                        <div class="nav-item px-3">
+                            <NavLink class="nav-link" href="gerenciar-usuarios">
+                                <span class="bi bi-people-fill"></span> Gerir Usuários
+                            </NavLink>
+                        </div>
+                    </Authorized>
+                </AuthorizeView>
+
+                <div class="nav-item px-3">
+                    <a class="nav-link" href="#" @onclick="LogoutAsync" @onclick:preventDefault>
+                        <span class="bi bi-box-arrow-right"></span> Logout
+                    </a>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+    </nav>
+</div>
+
+@code {
+private bool menuAberto;
+private string NavMenuCssClass => menuAberto ? "show" : "collapse";
+
+private void ToggleMenu() => menuAberto = !menuAberto;
+
+private async Task LogoutAsync()
+{
+    // 1. Limpa o token
+    await LocalStorage.RemoveItemAsync("authToken");
+    await LocalStorage.RemoveItemAsync("user");
+
+    // 2. Notifica o estado anônimo
+    if (AuthStateProvider is CustomAuthStateProvider cap)
+        cap.NotifyUserLogout();
+
+    // 3. Força recarregar e mostrar Login
+    Navigation.NavigateTo("/login", forceLoad: true);
+}
+}

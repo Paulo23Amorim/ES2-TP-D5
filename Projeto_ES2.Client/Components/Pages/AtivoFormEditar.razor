@@ -1,0 +1,147 @@
+﻿<h3>AtivoFormEditar</h3>
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@page "/ativo-editar/{Id:guid}"
+@using Projeto_ES2.Client.Components.DTOs
+@using Projeto_ES2.Client.Components.Models
+
+<h3 class="text-xl font-bold mb-4">Editar Ativo Financeiro</h3>
+
+@if (ativoDTO is null)
+{
+    <p>A carregar...</p>
+}
+else
+{
+    <EditForm Model="ativoDTO" OnValidSubmit="GuardarAlteracoes">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label>Nome:</label>
+            <InputText @bind-Value="ativoDTO.Nome" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Tipo:</label>
+            <InputSelect @bind-Value="ativoDTO.Tipo" class="form-control" disabled>
+                @foreach (var tipo in Enum.GetValues<TipoAtivoFinanceiro>())
+                {
+                    <option value="@tipo">@tipo</option>
+                }
+            </InputSelect>
+        </div>
+
+        <div class="mb-3">
+            <label>Data de Início:</label>
+            <InputDate @bind-Value="ativoDTO.DataInicio" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Imposto (%):</label>
+            <InputNumber @bind-Value="ativoDTO.Imposto" class="form-control" />
+        </div>
+
+        @if (ativoDTO.Tipo == TipoAtivoFinanceiro.DepositoPrazo)
+        {
+            <fieldset class="border p-3 rounded">
+                <legend>Depósito a Prazo</legend>
+                <div class="mb-2">
+                    <label>Valor Inicial:</label>
+                    <InputNumber @bind-Value="ativoDTO.Deposito!.ValorInicial" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Banco:</label>
+                    <InputText @bind-Value="ativoDTO.Deposito.Banco" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Nº Conta:</label>
+                    <InputText @bind-Value="ativoDTO.Deposito.NumeroConta" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Titulares:</label>
+                    <InputText @bind-Value="ativoDTO.Deposito.Titulares" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Taxa Juro Anual:</label>
+                    <InputNumber @bind-Value="ativoDTO.Deposito.TaxaJuroAnual" class="form-control" />
+                </div>
+            </fieldset>
+        }
+        else if (ativoDTO.Tipo == TipoAtivoFinanceiro.FundoInvestimento)
+        {
+            <fieldset class="border p-3 rounded">
+                <legend>Fundo de Investimento</legend>
+                <div class="mb-2">
+                    <label>Montante Investido:</label>
+                    <InputNumber @bind-Value="ativoDTO.Fundo!.MontanteInvestido" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Taxa Juro Padrão:</label>
+                    <InputNumber @bind-Value="ativoDTO.Fundo.TaxaJuroPadrao" class="form-control" />
+                </div>
+            </fieldset>
+        }
+        else if (ativoDTO.Tipo == TipoAtivoFinanceiro.ImovelArrendado)
+        {
+            <fieldset class="border p-3 rounded">
+                <legend>Imóvel Arrendado</legend>
+                <div class="mb-2">
+                    <label>Localização:</label>
+                    <InputText @bind-Value="ativoDTO.Imovel!.Localizacao" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Valor do Imóvel:</label>
+                    <InputNumber @bind-Value="ativoDTO.Imovel.Valor" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Renda:</label>
+                    <InputNumber @bind-Value="ativoDTO.Imovel.Renda" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Condomínio:</label>
+                    <InputNumber @bind-Value="ativoDTO.Imovel.Condominio" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label>Despesas:</label>
+                    <InputNumber @bind-Value="ativoDTO.Imovel.Despesas" class="form-control" />
+                </div>
+            </fieldset>
+        }
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary ms-2" @onclick="Cancelar">Cancelar</button>
+        </div>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private AtivoFinanceiroNovoDTO? ativoDTO;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ativoDTO = await Http.GetFromJsonAsync<AtivoFinanceiroNovoDTO>($"api/ativos/{Id}");
+    }
+
+    private async Task GuardarAlteracoes()
+    {
+        var response = await Http.PutAsJsonAsync($"api/ativos/{Id}", ativoDTO);
+        if (response.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/ativos");
+        }
+        else
+        {
+            Console.WriteLine("Erro ao guardar alterações.");
+        }
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/ativos");
+    }
+}

@@ -1,0 +1,215 @@
+﻿@page "/ativos/detalhes/{Id:guid}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject HttpClientService HttpClientService
+@using Projeto_ES2.Client.Components.Models
+@using Projeto_ES2.Client.Components.DTOs
+@using Projeto_ES2.Client.Services
+
+<h3 class="text-xl font-bold mb-4">Detalhes do Ativo Financeiro</h3>
+
+@if (_carregando)
+{
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
+}
+else if (!string.IsNullOrEmpty(_mensagemErro))
+{
+    <div class="alert alert-danger mb-4">@_mensagemErro</div>
+}
+else if (_ativo != null)
+{
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>@_ativo.Nome</h4>
+        </div>
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-md-3 fw-bold">Tipo:</div>
+                <div class="col-md-9">@_ativo.Tipo</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-3 fw-bold">Data de Início:</div>
+                <div class="col-md-9">@_ativo.DataInicio.ToShortDateString()</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-3 fw-bold">Data de Fim:</div>
+                <div class="col-md-9">@(_ativo.DataFim?.ToShortDateString() ?? "N/A")</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-3 fw-bold">Imposto:</div>
+                <div class="col-md-9">@_ativo.Imposto%</div>
+            </div>
+
+            @if (_ativo.Tipo == TipoAtivoFinanceiro.DepositoPrazo && _deposito != null)
+            {
+                <hr />
+                <h5 class="mb-3">Detalhes do Depósito a Prazo</h5>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Valor Inicial:</div>
+                    <div class="col-md-9">@_deposito.ValorInicial.ToString("C")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Banco:</div>
+                    <div class="col-md-9">@_deposito.Banco</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Nº Conta:</div>
+                    <div class="col-md-9">@_deposito.NumeroConta</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Titulares:</div>
+                    <div class="col-md-9">@_deposito.Titulares</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Taxa de Juro Anual:</div>
+                    <div class="col-md-9">@_deposito.TaxaJuroAnual%</div>
+                </div>
+            }
+            else if (_ativo.Tipo == TipoAtivoFinanceiro.FundoInvestimento && _fundo != null)
+            {
+                <hr />
+                <h5 class="mb-3">Detalhes do Fundo de Investimento</h5>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Montante Investido:</div>
+                    <div class="col-md-9">@_fundo.MontanteInvestido.ToString("C")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Taxa de Juro Padrão:</div>
+                    <div class="col-md-9">@_fundo.TaxaJuroPadrao%</div>
+                </div>
+            }
+            else if (_ativo.Tipo == TipoAtivoFinanceiro.ImovelArrendado && _imovel != null)
+            {
+                <hr />
+                <h5 class="mb-3">Detalhes do Imóvel Arrendado</h5>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Localização:</div>
+                    <div class="col-md-9">@_imovel.Localizacao</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Valor do Imóvel:</div>
+                    <div class="col-md-9">@_imovel.ValorImovel.ToString("C")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Renda Mensal:</div>
+                    <div class="col-md-9">@(_imovel.ValorRenda.HasValue ? _imovel.ValorRenda.Value.ToString("C") : "N/A")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Condomínio:</div>
+                    <div class="col-md-9">@(_imovel.ValorCondominio.HasValue ? _imovel.ValorCondominio.Value.ToString("C") : "N/A")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-3 fw-bold">Despesas Anuais:</div>
+                    <div class="col-md-9">@(_imovel.DespesasAnuais.HasValue ? _imovel.DespesasAnuais.Value.ToString("C") : "N/A")</div>
+                </div>
+            }
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" @onclick="Voltar">Voltar</button>
+            <button class="btn btn-warning ms-2" @onclick="() => EditarAtivo(Id)">Editar</button>
+            <button class="btn btn-danger ms-2" @onclick="() => ApagarAtivo(Id)">Apagar</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private AtivoFinanceiroDTO? _ativo;
+    private DepositoPrazo? _deposito;
+    private FundoInvestimento? _fundo;
+    private ImovelArrendado? _imovel;
+    private string _mensagemErro = string.Empty;
+    private bool _carregando = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarAtivo();
+    }
+
+    private async Task CarregarAtivo()
+    {
+        try
+        {
+            _carregando = true;
+            StateHasChanged();
+
+            // Carrega o ativo principal
+            _ativo = await Http.GetFromJsonAsync<AtivoFinanceiroDTO>($"api/AtivoFinanceiro/{Id}");
+
+            if (_ativo != null)
+            {
+                // Carregar detalhes específicos baseado no tipo
+                if (_ativo.Tipo == TipoAtivoFinanceiro.DepositoPrazo)
+                {
+                    _deposito = await Http.GetFromJsonAsync<DepositoPrazo>($"api/DepositoPrazo/{Id}");
+                }
+                else if (_ativo.Tipo == TipoAtivoFinanceiro.FundoInvestimento)
+                {
+                    _fundo = await Http.GetFromJsonAsync<FundoInvestimento>($"api/FundoInvestimento/{Id}");
+                }
+                else if (_ativo.Tipo == TipoAtivoFinanceiro.ImovelArrendado)
+                {
+                    _imovel = await Http.GetFromJsonAsync<ImovelArrendado>($"api/ImovelArrendado/{Id}");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _mensagemErro = $"Erro ao carregar ativo: {ex.Message}";
+            await JS.InvokeVoidAsync("console.error", ex);
+        }
+        finally
+        {
+            _carregando = false;
+            StateHasChanged();
+        }
+    }
+
+    private void Voltar()
+    {
+        Navigation.NavigateTo("/ativos");
+    }
+
+    private void EditarAtivo(Guid id)
+    {
+        Navigation.NavigateTo($"/ativos/editar/{id}");
+    }
+
+    private async Task ApagarAtivo(Guid id)
+    {
+        bool confirmed = await JS.InvokeAsync<bool>("confirm", "Tem certeza que deseja apagar este ativo?");
+
+        if (confirmed)
+        {
+            try
+            {
+                var response = await Http.DeleteAsync($"api/AtivoFinanceiro/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await JS.InvokeVoidAsync("alert", "Ativo removido com sucesso!");
+                    Navigation.NavigateTo("/ativos");
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    _mensagemErro = $"Erro ao apagar o ativo: {error}";
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                _mensagemErro = $"Erro ao apagar o ativo: {ex.Message}";
+                await JS.InvokeVoidAsync("console.error", ex);
+                StateHasChanged();
+            }
+        }
+    }
+}

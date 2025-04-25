@@ -1,0 +1,60 @@
+﻿@page "/novo/ativo"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@using Projeto_ES2.Components.DTOs
+@using Projeto_ES2.Components.Models
+@using System.Net.Http.Json
+
+<h3 class="text-xl font-bold mb-4">Novo Ativo Financeiro</h3>
+
+@if (!string.IsNullOrEmpty(mensagemErro))
+{
+    <div class="alert alert-danger mb-4">@mensagemErro</div>
+}
+
+<AtivoForm Ativo="@Ativo"
+           BotaoTexto="Salvar"
+           OnSubmit="@CriarAtivo"
+           ReturnUrl="/ativos" />
+
+@code {
+    private AtivoFinanceiroNovoDTO Ativo = new()
+    {
+        Nome = "",
+        Tipo = default, // Não define tipo inicial para evitar mostrar os campos
+        DataInicio = DateTime.Today,
+        DataFim = DateTime.Today.AddYears(1),
+        Imposto = 0,
+        Deposito = new(),
+        Fundo = new(),
+        Imovel = new()
+    };
+
+    private string mensagemErro = string.Empty;
+
+    private async Task CriarAtivo(AtivoFinanceiroNovoDTO ativo)
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/AtivoFinanceiro/novo", ativo);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                await JS.InvokeVoidAsync("alert", "Ativo criado com sucesso!");
+                Navigation.NavigateTo("/ativos");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                mensagemErro = $"Erro ao salvar ativo: {error}";
+                await JS.InvokeVoidAsync("console.error", mensagemErro);
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro: {ex.Message}";
+            await JS.InvokeVoidAsync("console.error", ex);
+        }
+    }
+}
