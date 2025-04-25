@@ -1,0 +1,79 @@
+﻿@page "/client/ativos"
+@using Projeto_ES2.Components.Layout
+@layout ClientLayout
+
+<h2>Ativos Financeiros</h2>
+
+<button class="btn-adicionar" @onclick="MostrarFormulario">Adicionar Ativo</button>
+
+@if (mostrarFormulario)
+{
+    <div class="form-ativo">
+        <h3>Novo Ativo</h3>
+        <EditForm Model="@novoAtivo">
+            <div>
+                <label>Nome:</label>
+                <InputText @bind-Value="novoAtivo.Nome" />
+            </div>
+            <div>
+                <label>Tipo:</label>
+                <InputSelect @bind-Value="novoAtivo.Tipo">
+                    <option value="">-- Selecione --</option>
+                    <option value="DepositoPrazo">Depósito a Prazo</option>
+                    <option value="FundoInvestimento">Fundo de Investimento</option>
+                    <option value="ImovelArrendado">Imóvel Arrendado</option>
+                </InputSelect>
+            </div>
+            <div>
+                <label>Data Início:</label>
+                <InputDate @bind-Value="novoAtivo.DataInicio" />
+            </div>
+            <div>
+                <label>Data Fim:</label>
+                <InputDate @bind-Value="novoAtivo.DataFim" />
+            </div>
+            <div>
+                <label>Imposto (%):</label>
+                <InputNumber @bind-Value="novoAtivo.Imposto" />
+            </div>
+
+            <button type="submit">Guardar (Simulado)</button>
+        </EditForm>
+    </div>
+}
+
+<!-- Tabela sem dados -->
+<table class="tabela-ativos">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Imposto (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Sem dados por enquanto -->
+    </tbody>
+</table>
+
+@code {
+    private bool mostrarFormulario = false;
+
+    private NovoAtivo novoAtivo = new();
+
+    void MostrarFormulario()
+    {
+        mostrarFormulario = true;
+    }
+
+    public class NovoAtivo
+    {
+        public string Nome { get; set; } = string.Empty;
+        public string Tipo { get; set; } = string.Empty;
+        public DateTime DataInicio { get; set; } = DateTime.Today;
+        public DateTime DataFim { get; set; } = DateTime.Today;
+        public decimal Imposto { get; set; }
+    }
+}

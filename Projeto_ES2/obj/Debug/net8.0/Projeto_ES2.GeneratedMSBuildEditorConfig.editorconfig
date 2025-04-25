@@ -9,55 +9,95 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Projeto_ES2
 build_property.RootNamespace = Projeto_ES2
-build_property.ProjectDir = C:\4Ano\ESII\ES2-TP-D5\Projeto_ES2\
+build_property.ProjectDir = C:\Universidade\4ANO\SEMESTRE2\ESII\TRABALHO_PRATICO\ES2-TP-D5\Projeto_ES2\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\4Ano\ESII\ES2-TP-D5\Projeto_ES2
+build_property.MSBuildProjectDirectory = C:\Universidade\4ANO\SEMESTRE2\ESII\TRABALHO_PRATICO\ES2-TP-D5\Projeto_ES2
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/App.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Counter.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/ClientLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQ2xpZW50TGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/UserManagerLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcVXNlck1hbmFnZXJMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Error.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Home.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/HelloWorld.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWxsb1dvcmxkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Login.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Register.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Pages/Weather.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Users/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xBZG1pbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Users/Client.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xDbGllbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Users/ClientAtivos.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xDbGllbnRBdGl2b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Users/UserManager.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xVc2VyTWFuYWdlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Routes.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/_Imports.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Layout/MainLayout.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/ClientAtivosLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQ2xpZW50QXRpdm9zTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-je68p2qpox
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-8g3qoa08wn
 
-[C:/4Ano/ESII/ES2-TP-D5/Projeto_ES2/Components/Layout/NavMenu.razor]
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-c9kly0e3ls
+
+[C:/Universidade/4ANO/SEMESTRE2/ESII/TRABALHO_PRATICO/ES2-TP-D5/Projeto_ES2/Components/Layout/PopupAtivo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUG9wdXBBdGl2by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-86bw43ql9d

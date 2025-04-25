@@ -1,10 +1,11 @@
-﻿@namespace Projeto_ES2.Components.Layout
-
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu/>
+        @if (this.GetType() != typeof(ClientLayout))
+        {
+        <NavMenu />  <!-- Apenas mostra o NavMenu se não for o layout do cliente -->
+        }
     </div>
 
     <main>
