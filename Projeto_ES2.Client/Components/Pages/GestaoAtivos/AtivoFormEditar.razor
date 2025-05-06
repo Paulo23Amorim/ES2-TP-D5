@@ -1,0 +1,124 @@
+﻿@using Projeto_ES2.Client.Components.DTOs
+@using Projeto_ES2.Client.Components.Models
+@inherits ComponentBase
+
+<EditForm Model="Ativo" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Nome:</label>
+        <InputText @bind-Value="Ativo.Nome" class="form-control" />
+    </div>
+
+    <div>
+        <label>Tipo:</label>
+        <InputSelect @bind-Value="Ativo.Tipo" class="form-control">
+            @foreach (var tipo in Enum.GetValues<TipoAtivoFinanceiro>())
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div>
+        <label>Data Início:</label>
+        <InputDate @bind-Value="Ativo.DataInicio" class="form-control" />
+    </div>
+
+    <div>
+        <label>Data Fim (opcional):</label>
+        <InputDate @bind-Value="Ativo.DataFim" class="form-control" />
+    </div>
+
+    <div>
+        <label>Imposto:</label>
+        <InputNumber @bind-Value="Ativo.Imposto" class="form-control" />
+    </div>
+
+    @if (Ativo.Tipo == TipoAtivoFinanceiro.DepositoPrazo)
+    {
+        <h4>Dados do Depósito</h4>
+        <div>
+            <label>Valor Inicial:</label>
+            <InputNumber @bind-Value="Ativo.Deposito.ValorInicial" class="form-control" />
+        </div>
+        <div>
+            <label>Banco:</label>
+            <InputText @bind-Value="Ativo.Deposito.Banco" class="form-control" />
+        </div>
+        <div>
+            <label>Número Conta:</label>
+            <InputText @bind-Value="Ativo.Deposito.NumeroConta" class="form-control" />
+        </div>
+        <div>
+            <label>Titulares:</label>
+            <InputText @bind-Value="Ativo.Deposito.Titulares" class="form-control" />
+        </div>
+        <div>
+            <label>Taxa Juro Anual:</label>
+            <InputNumber @bind-Value="Ativo.Deposito.TaxaJuroAnual" class="form-control" />
+        </div>
+    }
+    else if (Ativo.Tipo == TipoAtivoFinanceiro.FundoInvestimento)
+    {
+        <h4>Dados do Fundo</h4>
+        <div>
+            <label>Montante Investido:</label>
+            <InputNumber @bind-Value="Ativo.Fundo.MontanteInvestido" class="form-control" />
+        </div>
+        <div>
+            <label>Taxa Juro Padrão:</label>
+            <InputNumber @bind-Value="Ativo.Fundo.TaxaJuroPadrao" class="form-control" />
+        </div>
+    }
+    else if (Ativo.Tipo == TipoAtivoFinanceiro.ImovelArrendado)
+    {
+        <h4>Dados do Imóvel</h4>
+        <div>
+            <label>Localização:</label>
+            <InputText @bind-Value="Ativo.Imovel.Localizacao" class="form-control" />
+        </div>
+        <div>
+            <label>Valor:</label>
+            <InputNumber @bind-Value="Ativo.Imovel.Valor" class="form-control" />
+        </div>
+        <div>
+            <label>Renda:</label>
+            <InputNumber @bind-Value="Ativo.Imovel.Renda" class="form-control" />
+        </div>
+        <div>
+            <label>Condomínio:</label>
+            <InputNumber @bind-Value="Ativo.Imovel.Condominio" class="form-control" />
+        </div>
+        <div>
+            <label>Despesas:</label>
+            <InputNumber @bind-Value="Ativo.Imovel.Despesas" class="form-control" />
+        </div>
+    }
+
+    <br />
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="button" class="btn btn-secondary" @onclick="Cancelar">Cancelar</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public AtivoFinanceiroNovoDTO Ativo { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<AtivoFinanceiroNovoDTO> OnSalvar { get; set; }
+
+    [Parameter]
+    public EventCallback OnCancelar { get; set; }
+
+    private async Task HandleValidSubmit()
+    {
+        await OnSalvar.InvokeAsync(Ativo);
+    }
+
+    private async Task Cancelar()
+    {
+        await OnCancelar.InvokeAsync();
+    }
+}

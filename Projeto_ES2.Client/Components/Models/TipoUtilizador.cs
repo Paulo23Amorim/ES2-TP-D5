@@ -1,10 +1,12 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Projeto_ES2.Client.Components.Models;
-
-public enum TipoUtilizador
+namespace Projeto_ES2.Client.Components.Models
 {
-    Utilizador = 0,  // Explicit values
-    UserManager = 1,
-    Admin = 2
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum TipoUtilizador
+    {
+        Utilizador = 0,
+        UserManager = 1,
+        Admin = 2
+    }
 }

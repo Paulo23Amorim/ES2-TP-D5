@@ -1,71 +1,75 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
+using Projeto_ES2.Client.Components.DTOs;
 
-namespace Projeto_ES2.Client.Services;
-
-public class HttpClientService
+namespace Projeto_ES2.Client.Services
 {
-    private readonly HttpClient _http;
-    private readonly ILocalStorageService _localStorage;
-    private readonly NavigationManager _navigation;
-
-    public HttpClientService(
-        HttpClient http,
-        ILocalStorageService localStorage,
-        NavigationManager navigation)
+    public class HttpClientService
     {
-        _http = http;
-        _localStorage = localStorage;
-        _navigation = navigation;
-    }
+        private readonly HttpClient            _http;
+        private readonly ILocalStorageService  _localStorage;
+        private readonly NavigationManager     _navigation;
+        private readonly JsonSerializerOptions _jsonOptions;
 
-    public async Task<HttpResponseMessage> SendAuthorizedRequestAsync(
-        HttpMethod method, 
-        string uri, 
-        object content = null)
-    {
-        try
+        public HttpClientService(
+            HttpClient http,
+            ILocalStorageService localStorage,
+            NavigationManager navigation,
+            JsonSerializerOptions jsonOptions)
         {
-            var token = await _localStorage.GetItemAsStringAsync("authToken");
-            
-            var request = new HttpRequestMessage(method, uri);
-            
-            if (!string.IsNullOrEmpty(token))
-            {
-                // Remove aspas que podem existir no token
-                token = token.Trim('"');
-                request.Headers.Authorization = 
-                    new AuthenticationHeaderValue("Bearer", token);
-            }
+            _http         = http;
+            _localStorage = localStorage;
+            _navigation   = navigation;
+            _jsonOptions  = jsonOptions;
+        }
 
-            if (content != null)
-            {
-                request.Content = new StringContent(
-                    JsonSerializer.Serialize(content),
+        /// <summary>
+        /// Exemplo de método GET que já utiliza as opções de JSON (enum→string).
+        /// </summary>
+        public Task<List<AtivoFinanceiroDTO>?> GetAtivosAsync() =>
+            _http.GetFromJsonAsync<List<AtivoFinanceiroDTO>>(
+                "api/AtivoFinanceiro", _jsonOptions);
+
+        /// <summary>
+        /// Envia requisições autenticadas (POST, PUT, DELETE…).
+        /// </summary>
+        public async Task<HttpResponseMessage?> SendAuthorizedRequestAsync(
+            HttpMethod method,
+            string uri,
+            object? content = null)
+        {
+            var token = (await _localStorage.GetItemAsStringAsync("authToken"))
+                            ?.Trim('"');
+
+            var req = new HttpRequestMessage(method, uri);
+            if (!string.IsNullOrWhiteSpace(token))
+                req.Headers.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+
+            if (content is not null)
+                req.Content = new StringContent(
+                    JsonSerializer.Serialize(content, _jsonOptions),
                     Encoding.UTF8,
                     "application/json");
-            }
 
-            var response = await _http.SendAsync(request);
+            var resp = await _http.SendAsync(req);
+            Console.WriteLine($"[HTTP] {method} {uri} → {resp.StatusCode}");
 
-            // Log para depuração
-            Console.WriteLine($"Requisição {method} para {uri}: Status {response.StatusCode}");
-
-            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            if (resp.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 _navigation.NavigateTo("/logout");
                 return null;
             }
 
-            return response;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erro na requisição HTTP: {ex.Message}");
-            throw;
+            return resp;
         }
     }
 }

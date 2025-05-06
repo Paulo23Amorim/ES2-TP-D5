@@ -1076,8 +1076,8 @@ C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compr
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\xe2c48adkx-oyz0vx2fzb.gz
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\staticwebassets\msbuild.Projeto_ES2.Client.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\rq6bktwkxz-yq82bud1yu.gz
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\eny3yw4gi7-lr98i2t9dt.gz
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\13592j7kua-njw9ae1zv2.gz
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\fafmb24zi4-ys2ly8m85i.gz
-C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\7si68t8x5a-n1618on52x.gz
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\rq6bktwkxz-sfm5sphs4b.gz
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\eny3yw4gi7-qxdkq29fl3.gz
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\13592j7kua-pr3swtc5fb.gz
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\fafmb24zi4-xmtcro0lgp.gz
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Client\obj\Debug\net8.0\compressed\7si68t8x5a-xce8rpzomp.gz

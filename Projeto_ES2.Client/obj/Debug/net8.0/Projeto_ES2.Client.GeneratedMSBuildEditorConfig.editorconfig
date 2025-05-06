@@ -28,24 +28,28 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Layout/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Layout/ClientAtivosLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQ2xpZW50QXRpdm9zTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Layout/ClientLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQ2xpZW50TGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Layout/PopupAtivo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUG9wdXBBdGl2by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Layout/UserManagerLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcVXNlck1hbmFnZXJMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/AccessDenied.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2Nlc3NEZW5pZWQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/AtivoDetalhes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdGl2b0RldGFsaGVzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/AtivoEditar.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdGl2b0VkaXRhci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/AtivoForm.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdGl2b0Zvcm0ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/AtivoFormEditar.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdGl2b0Zvcm1FZGl0YXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Counter.razor]
@@ -56,8 +60,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3MucmF6b3I=
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/AtivoDetalhes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcQXRpdm9EZXRhbGhlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/AtivoEditar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcQXRpdm9FZGl0YXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/AtivoForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcQXRpdm9Gb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/AtivoFormEditar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcQXRpdm9Gb3JtRWRpdGFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/GestaoAtivos.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcR2VzdGFvQXRpdm9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/GestaoAtivos/NovoAtivo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXN0YW9BdGl2b3NcTm92b0F0aXZvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Home.razor]
@@ -68,12 +92,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/NovoAtivo.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3ZvQXRpdm8ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Users/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xBZG1pbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Users/Client.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xDbGllbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Users/UserManager.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2Vyc1xVc2VyTWFuYWdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/aldas/RiderProjects/ES2-TP-D5/Projeto_ES2.Client/Components/Pages/Weather.razor]

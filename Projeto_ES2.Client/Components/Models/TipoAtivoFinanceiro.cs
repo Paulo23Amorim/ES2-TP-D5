@@ -1,8 +1,12 @@
-﻿namespace Projeto_ES2.Client.Components.Models;
+﻿using System.Text.Json.Serialization;
 
-public enum TipoAtivoFinanceiro
+namespace Projeto_ES2.Client.Components.Models
 {
-    DepositoPrazo,
-    FundoInvestimento,
-    ImovelArrendado
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum TipoAtivoFinanceiro
+    {
+        DepositoPrazo = 0,
+        FundoInvestimento = 1,
+        ImovelArrendado = 2
+    }
 }
