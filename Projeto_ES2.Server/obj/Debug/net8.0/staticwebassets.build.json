@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C1gbxC5gYq/pSy8Da/HSn9i2QKZunj9jSHfK9C1ccxI=",
+  "Hash": "22DC+4IwXyzqkaC++RDeR7knlFcdkbEcx4CKVTUfQ1A=",
   "Source": "Projeto_ES2.Server",
   "BasePath": "_content/Projeto_ES2.Server",
   "Mode": "Default",
@@ -64,8 +64,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "n1618on52x",
-      "Integrity": "2+zkZMoS4bcurOCHKNsjsuOcVQ5rm0mxcmsPhfMLw+A=",
+      "Fingerprint": "xce8rpzomp",
+      "Integrity": "T9bsXoBrLPLGT3ITzSaXgAL/a0wlvCDRBZrX6pYpvGc=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -1072,8 +1072,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "ys2ly8m85i",
-      "Integrity": "cuMF0TDYEotR7UczCKgJ14NtCdh5XBkzagZu3LD01nE=",
+      "Fingerprint": "xmtcro0lgp",
+      "Integrity": "90PED9pSrZSXSMxqyJrkixso7Zw5zbddCqae5o1/0Tw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Client.pdb"
@@ -1093,8 +1093,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "njw9ae1zv2",
-      "Integrity": "/eAqu3TFL/fD02iUjc6+TUa28qPk45IoP5/SGIfDe3I=",
+      "Fingerprint": "pr3swtc5fb",
+      "Integrity": "60ksdjjApq+HFZGfrj12li0GWvN652dh8QCUB1si8rs=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Client.wasm"
@@ -1114,8 +1114,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "lr98i2t9dt",
-      "Integrity": "cY0uVyIKEGxItyobX/pOQxxNPN3MDagqvVRBnIp12Zk=",
+      "Fingerprint": "qxdkq29fl3",
+      "Integrity": "corT2SQDZW291QuBa6P8/uQrlV96Iacap6esaxitG/0=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Shared.pdb"
@@ -1135,8 +1135,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "yq82bud1yu",
-      "Integrity": "yssWRgqIa+Bu2cnwug1kry9VhL0YMExU5Lb6dia2cRM=",
+      "Fingerprint": "sfm5sphs4b",
+      "Integrity": "KE+lpDMmhUG0A4QUTmrAlWrnyMTeLDFHRMJlrxEVEyE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Shared.wasm"
@@ -4712,7 +4712,7 @@
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\0s0aczcsi0-8a7fr7r65u.gz"
     },
     {
-      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-njw9ae1zv2.gz",
+      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-pr3swtc5fb.gz",
       "SourceId": "Projeto_ES2.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -4726,11 +4726,11 @@
       "RelatedAsset": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "a34afp5mxq",
-      "Integrity": "yonAEtZwEi/g0+pMGtUxxcykmSgGQ83NXI2VNRIaUPw=",
+      "Fingerprint": "1i298ywrhx",
+      "Integrity": "6QR1MuD0jtw2N3mFbDMIDT6tECIfWSad7DypVHhROzc=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-njw9ae1zv2.gz"
+      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-pr3swtc5fb.gz"
     },
     {
       "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\15g0w4cp7q-10hxn1nf42.gz",
@@ -5384,7 +5384,7 @@
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7q0udeffqx-nrjfy7fpqn.gz"
     },
     {
-      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-n1618on52x.gz",
+      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-xce8rpzomp.gz",
       "SourceId": "Projeto_ES2.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -5398,11 +5398,11 @@
       "RelatedAsset": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3hapx00akb",
-      "Integrity": "R0KetV+R+noo32hDoBClQOgpdPKBN/OLyBdcMql8cHY=",
+      "Fingerprint": "gkudjmj202",
+      "Integrity": "AGlCgSP19jnyf86FsoyBWyX6m3OysyzSoiEBwb//vVg=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-n1618on52x.gz"
+      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-xce8rpzomp.gz"
     },
     {
       "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7uign14hwx-uiao4z43oz.gz",
@@ -6182,7 +6182,7 @@
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\ef340olqnj-gp6iiqky60.gz"
     },
     {
-      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-lr98i2t9dt.gz",
+      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-qxdkq29fl3.gz",
       "SourceId": "Projeto_ES2.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -6196,11 +6196,11 @@
       "RelatedAsset": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Shared.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "i9zfmowd3n",
-      "Integrity": "uikHzQFK1nnN/ObJhb9U8A70IOdONEQ0msu4sbSr5fw=",
+      "Fingerprint": "igfb8jn9b3",
+      "Integrity": "AgfBrkHexuANhECml4HloUukPoQXmCr2zfhJvzlKQS8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-lr98i2t9dt.gz"
+      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-qxdkq29fl3.gz"
     },
     {
       "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\ev0yya86tz-3ziowrx3ga.gz",
@@ -6266,7 +6266,7 @@
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\f9g933wjb6-8fpsiwhrue.gz"
     },
     {
-      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-ys2ly8m85i.gz",
+      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-xmtcro0lgp.gz",
       "SourceId": "Projeto_ES2.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -6280,11 +6280,11 @@
       "RelatedAsset": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "isa7bwjfyx",
-      "Integrity": "nnJy3AqOv7PlCSNhHshzrI5WxbVJS87uoRBkv9C35z8=",
+      "Fingerprint": "30joqd2lof",
+      "Integrity": "M4SjGqcikEsn4td17M5aMGQAExzcekrpmAjIgsUSX7w=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-ys2ly8m85i.gz"
+      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-xmtcro0lgp.gz"
     },
     {
       "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fpnycrkfnl-1bws4924fz.gz",
@@ -7694,7 +7694,7 @@
       "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rp1zvqy0ct-evdj605hrf.gz"
     },
     {
-      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-yq82bud1yu.gz",
+      "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-sfm5sphs4b.gz",
       "SourceId": "Projeto_ES2.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -7708,11 +7708,11 @@
       "RelatedAsset": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Projeto_ES2.Shared.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "uprhwuxrts",
-      "Integrity": "ks5uVXuzSQ9EAg4HZOm3nlp6jop8JKWgW3I33hTYTug=",
+      "Fingerprint": "owl701jsc5",
+      "Integrity": "WMGCMBYsY7HZawnMA95QT6LmbuLYg9ED9A1jEKvhymE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-yq82bud1yu.gz"
+      "OriginalItemSpec": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-sfm5sphs4b.gz"
     },
     {
       "Identity": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rqnz36pjsk-gihdwa9b8l.gz",
@@ -10212,28 +10212,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2+zkZMoS4bcurOCHKNsjsuOcVQ5rm0mxcmsPhfMLw+A=\""
+          "Value": "\"T9bsXoBrLPLGT3ITzSaXgAL/a0wlvCDRBZrX6pYpvGc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:35:18 GMT"
+          "Value": "Tue, 06 May 2025 17:31:55 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2+zkZMoS4bcurOCHKNsjsuOcVQ5rm0mxcmsPhfMLw+A="
+          "Value": "sha256-T9bsXoBrLPLGT3ITzSaXgAL/a0wlvCDRBZrX6pYpvGc="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-n1618on52x.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-xce8rpzomp.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000110326567"
+          "Quality": "0.000110302228"
         }
       ],
       "ResponseHeaders": [
@@ -10251,15 +10251,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9063"
+          "Value": "9065"
         },
         {
           "Name": "ETag",
-          "Value": "\"R0KetV+R+noo32hDoBClQOgpdPKBN/OLyBdcMql8cHY=\""
+          "Value": "\"AGlCgSP19jnyf86FsoyBWyX6m3OysyzSoiEBwb//vVg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:48 GMT"
+          "Value": "Tue, 06 May 2025 17:29:45 GMT"
         },
         {
           "Name": "Vary",
@@ -10271,19 +10271,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"2+zkZMoS4bcurOCHKNsjsuOcVQ5rm0mxcmsPhfMLw+A=\""
+          "Value": "W/\"T9bsXoBrLPLGT3ITzSaXgAL/a0wlvCDRBZrX6pYpvGc=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2+zkZMoS4bcurOCHKNsjsuOcVQ5rm0mxcmsPhfMLw+A="
+          "Value": "sha256-T9bsXoBrLPLGT3ITzSaXgAL/a0wlvCDRBZrX6pYpvGc="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-n1618on52x.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\7si68t8x5a-xce8rpzomp.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10300,7 +10300,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9063"
+          "Value": "9065"
         },
         {
           "Name": "Content-Type",
@@ -10308,11 +10308,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R0KetV+R+noo32hDoBClQOgpdPKBN/OLyBdcMql8cHY=\""
+          "Value": "\"AGlCgSP19jnyf86FsoyBWyX6m3OysyzSoiEBwb//vVg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:48 GMT"
+          "Value": "Tue, 06 May 2025 17:29:45 GMT"
         },
         {
           "Name": "Vary",
@@ -10322,7 +10322,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R0KetV+R+noo32hDoBClQOgpdPKBN/OLyBdcMql8cHY="
+          "Value": "sha256-AGlCgSP19jnyf86FsoyBWyX6m3OysyzSoiEBwb//vVg="
         }
       ]
     },
@@ -16780,7 +16780,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "92468"
+          "Value": "99496"
         },
         {
           "Name": "Content-Type",
@@ -16788,28 +16788,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"cuMF0TDYEotR7UczCKgJ14NtCdh5XBkzagZu3LD01nE=\""
+          "Value": "\"90PED9pSrZSXSMxqyJrkixso7Zw5zbddCqae5o1/0Tw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:35:15 GMT"
+          "Value": "Tue, 06 May 2025 17:31:53 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cuMF0TDYEotR7UczCKgJ14NtCdh5XBkzagZu3LD01nE="
+          "Value": "sha256-90PED9pSrZSXSMxqyJrkixso7Zw5zbddCqae5o1/0Tw="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Client.pdb",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-ys2ly8m85i.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-xmtcro0lgp.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000014755356"
+          "Quality": "0.000013326404"
         }
       ],
       "ResponseHeaders": [
@@ -16827,15 +16827,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "67771"
+          "Value": "75038"
         },
         {
           "Name": "ETag",
-          "Value": "\"nnJy3AqOv7PlCSNhHshzrI5WxbVJS87uoRBkv9C35z8=\""
+          "Value": "\"M4SjGqcikEsn4td17M5aMGQAExzcekrpmAjIgsUSX7w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:39 GMT"
+          "Value": "Tue, 06 May 2025 17:27:38 GMT"
         },
         {
           "Name": "Vary",
@@ -16847,19 +16847,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"cuMF0TDYEotR7UczCKgJ14NtCdh5XBkzagZu3LD01nE=\""
+          "Value": "W/\"90PED9pSrZSXSMxqyJrkixso7Zw5zbddCqae5o1/0Tw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cuMF0TDYEotR7UczCKgJ14NtCdh5XBkzagZu3LD01nE="
+          "Value": "sha256-90PED9pSrZSXSMxqyJrkixso7Zw5zbddCqae5o1/0Tw="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Client.pdb.gz",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-ys2ly8m85i.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\fafmb24zi4-xmtcro0lgp.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16876,7 +16876,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "67771"
+          "Value": "75038"
         },
         {
           "Name": "Content-Type",
@@ -16884,11 +16884,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nnJy3AqOv7PlCSNhHshzrI5WxbVJS87uoRBkv9C35z8=\""
+          "Value": "\"M4SjGqcikEsn4td17M5aMGQAExzcekrpmAjIgsUSX7w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:39 GMT"
+          "Value": "Tue, 06 May 2025 17:27:38 GMT"
         },
         {
           "Name": "Vary",
@@ -16898,7 +16898,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nnJy3AqOv7PlCSNhHshzrI5WxbVJS87uoRBkv9C35z8="
+          "Value": "sha256-M4SjGqcikEsn4td17M5aMGQAExzcekrpmAjIgsUSX7w="
         }
       ]
     },
@@ -16917,7 +16917,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "154901"
+          "Value": "153877"
         },
         {
           "Name": "Content-Type",
@@ -16925,28 +16925,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/eAqu3TFL/fD02iUjc6+TUa28qPk45IoP5/SGIfDe3I=\""
+          "Value": "\"60ksdjjApq+HFZGfrj12li0GWvN652dh8QCUB1si8rs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:35:16 GMT"
+          "Value": "Tue, 06 May 2025 17:31:53 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/eAqu3TFL/fD02iUjc6+TUa28qPk45IoP5/SGIfDe3I="
+          "Value": "sha256-60ksdjjApq+HFZGfrj12li0GWvN652dh8QCUB1si8rs="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Client.wasm",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-njw9ae1zv2.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-pr3swtc5fb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000019412952"
+          "Quality": "0.000019248537"
         }
       ],
       "ResponseHeaders": [
@@ -16964,15 +16964,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "51511"
+          "Value": "51951"
         },
         {
           "Name": "ETag",
-          "Value": "\"yonAEtZwEi/g0+pMGtUxxcykmSgGQ83NXI2VNRIaUPw=\""
+          "Value": "\"6QR1MuD0jtw2N3mFbDMIDT6tECIfWSad7DypVHhROzc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:47 GMT"
+          "Value": "Tue, 06 May 2025 17:27:40 GMT"
         },
         {
           "Name": "Vary",
@@ -16984,19 +16984,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"/eAqu3TFL/fD02iUjc6+TUa28qPk45IoP5/SGIfDe3I=\""
+          "Value": "W/\"60ksdjjApq+HFZGfrj12li0GWvN652dh8QCUB1si8rs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/eAqu3TFL/fD02iUjc6+TUa28qPk45IoP5/SGIfDe3I="
+          "Value": "sha256-60ksdjjApq+HFZGfrj12li0GWvN652dh8QCUB1si8rs="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-njw9ae1zv2.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\13592j7kua-pr3swtc5fb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17013,7 +17013,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "51511"
+          "Value": "51951"
         },
         {
           "Name": "Content-Type",
@@ -17021,11 +17021,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yonAEtZwEi/g0+pMGtUxxcykmSgGQ83NXI2VNRIaUPw=\""
+          "Value": "\"6QR1MuD0jtw2N3mFbDMIDT6tECIfWSad7DypVHhROzc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:19:47 GMT"
+          "Value": "Tue, 06 May 2025 17:27:40 GMT"
         },
         {
           "Name": "Vary",
@@ -17035,7 +17035,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yonAEtZwEi/g0+pMGtUxxcykmSgGQ83NXI2VNRIaUPw="
+          "Value": "sha256-6QR1MuD0jtw2N3mFbDMIDT6tECIfWSad7DypVHhROzc="
         }
       ]
     },
@@ -17054,7 +17054,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11184"
+          "Value": "10612"
         },
         {
           "Name": "Content-Type",
@@ -17062,23 +17062,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"cY0uVyIKEGxItyobX/pOQxxNPN3MDagqvVRBnIp12Zk=\""
+          "Value": "\"corT2SQDZW291QuBa6P8/uQrlV96Iacap6esaxitG/0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:35:02 GMT"
+          "Value": "Fri, 25 Apr 2025 18:18:46 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cY0uVyIKEGxItyobX/pOQxxNPN3MDagqvVRBnIp12Zk="
+          "Value": "sha256-corT2SQDZW291QuBa6P8/uQrlV96Iacap6esaxitG/0="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Shared.pdb",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-lr98i2t9dt.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-qxdkq29fl3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -17105,11 +17105,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uikHzQFK1nnN/ObJhb9U8A70IOdONEQ0msu4sbSr5fw=\""
+          "Value": "\"AgfBrkHexuANhECml4HloUukPoQXmCr2zfhJvzlKQS8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:04:41 GMT"
+          "Value": "Fri, 25 Apr 2025 18:18:46 GMT"
         },
         {
           "Name": "Vary",
@@ -17121,19 +17121,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"cY0uVyIKEGxItyobX/pOQxxNPN3MDagqvVRBnIp12Zk=\""
+          "Value": "W/\"corT2SQDZW291QuBa6P8/uQrlV96Iacap6esaxitG/0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cY0uVyIKEGxItyobX/pOQxxNPN3MDagqvVRBnIp12Zk="
+          "Value": "sha256-corT2SQDZW291QuBa6P8/uQrlV96Iacap6esaxitG/0="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Shared.pdb.gz",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-lr98i2t9dt.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\eny3yw4gi7-qxdkq29fl3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17158,11 +17158,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uikHzQFK1nnN/ObJhb9U8A70IOdONEQ0msu4sbSr5fw=\""
+          "Value": "\"AgfBrkHexuANhECml4HloUukPoQXmCr2zfhJvzlKQS8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:04:41 GMT"
+          "Value": "Fri, 25 Apr 2025 18:18:46 GMT"
         },
         {
           "Name": "Vary",
@@ -17172,7 +17172,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uikHzQFK1nnN/ObJhb9U8A70IOdONEQ0msu4sbSr5fw="
+          "Value": "sha256-AgfBrkHexuANhECml4HloUukPoQXmCr2zfhJvzlKQS8="
         }
       ]
     },
@@ -17191,7 +17191,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4885"
+          "Value": "3861"
         },
         {
           "Name": "Content-Type",
@@ -17199,28 +17199,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yssWRgqIa+Bu2cnwug1kry9VhL0YMExU5Lb6dia2cRM=\""
+          "Value": "\"KE+lpDMmhUG0A4QUTmrAlWrnyMTeLDFHRMJlrxEVEyE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:35:16 GMT"
+          "Value": "Fri, 25 Apr 2025 18:19:26 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yssWRgqIa+Bu2cnwug1kry9VhL0YMExU5Lb6dia2cRM="
+          "Value": "sha256-KE+lpDMmhUG0A4QUTmrAlWrnyMTeLDFHRMJlrxEVEyE="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Shared.wasm",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-yq82bud1yu.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-sfm5sphs4b.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000654878847"
+          "Quality": "0.000653167864"
         }
       ],
       "ResponseHeaders": [
@@ -17238,15 +17238,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1526"
+          "Value": "1530"
         },
         {
           "Name": "ETag",
-          "Value": "\"ks5uVXuzSQ9EAg4HZOm3nlp6jop8JKWgW3I33hTYTug=\""
+          "Value": "\"WMGCMBYsY7HZawnMA95QT6LmbuLYg9ED9A1jEKvhymE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:12 GMT"
+          "Value": "Fri, 25 Apr 2025 18:19:26 GMT"
         },
         {
           "Name": "Vary",
@@ -17258,19 +17258,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"yssWRgqIa+Bu2cnwug1kry9VhL0YMExU5Lb6dia2cRM=\""
+          "Value": "W/\"KE+lpDMmhUG0A4QUTmrAlWrnyMTeLDFHRMJlrxEVEyE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yssWRgqIa+Bu2cnwug1kry9VhL0YMExU5Lb6dia2cRM="
+          "Value": "sha256-KE+lpDMmhUG0A4QUTmrAlWrnyMTeLDFHRMJlrxEVEyE="
         }
       ]
     },
     {
       "Route": "_framework/Projeto_ES2.Shared.wasm.gz",
-      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-yq82bud1yu.gz",
+      "AssetFile": "C:\\Users\\aldas\\RiderProjects\\ES2-TP-D5\\Projeto_ES2.Client\\obj\\Debug\\net8.0\\compressed\\rq6bktwkxz-sfm5sphs4b.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17287,7 +17287,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1526"
+          "Value": "1530"
         },
         {
           "Name": "Content-Type",
@@ -17295,11 +17295,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ks5uVXuzSQ9EAg4HZOm3nlp6jop8JKWgW3I33hTYTug=\""
+          "Value": "\"WMGCMBYsY7HZawnMA95QT6LmbuLYg9ED9A1jEKvhymE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:12 GMT"
+          "Value": "Fri, 25 Apr 2025 18:19:26 GMT"
         },
         {
           "Name": "Vary",
@@ -17309,7 +17309,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ks5uVXuzSQ9EAg4HZOm3nlp6jop8JKWgW3I33hTYTug="
+          "Value": "sha256-WMGCMBYsY7HZawnMA95QT6LmbuLYg9ED9A1jEKvhymE="
         }
       ]
     },
