@@ -1,0 +1,35 @@
+﻿@page "/Error"
+@using System.Diagnostics
+
+<PageTitle>Error</PageTitle>
+
+<h1 class="text-danger">Erro.</h1>
+<h2 class="text-danger">Ocorreu um erro ao processar a tua requisição.</h2>
+
+@if (ShowRequestId)
+{
+    <p>
+        <strong>ID da requisição:</strong> <code>@RequestId</code>
+    </p>
+}
+
+<h3>Modo de desenvolvimento</h3>
+<p>
+    Alternar para o ambiente <strong>Desenvolvimento</strong> mostra informações mais detalhadas sobre o erro.
+</p>
+<p>
+    <strong>Não atives o ambiente de desenvolvimento em produção.</strong>
+    Isso pode expor informações sensíveis para o utilizador.
+    Para depuração local, define a variável de ambiente <strong>ASPNETCORE_ENVIRONMENT</strong> como <strong>Development</strong>
+    e reinicia a aplicação.
+</p>
+
+@code {
+    private string? RequestId { get; set; }
+    private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+    protected override void OnInitialized()
+    {
+        RequestId = Activity.Current?.Id ?? Guid.NewGuid().ToString(); // Usa Guid como fallback
+    }
+}

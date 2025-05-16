@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Projeto_ES2.Client.Components.Layout
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <div class="alert alert-warning mt-4">
+                        <p>Você não está autorizado a acessar esta página.</p>
+                        <a href="/login" class="btn btn-primary">Ir para Login</a>
+                    </div>
+                </NotAuthorized>
+                <Authorizing>
+                    <div class="text-center mt-4">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p>Verificando autorização...</p>
+                    </div>
+                </Authorizing>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <div class="alert alert-danger mt-4" role="alert">
+                    <PageTitle>Página não encontrada</PageTitle>
+                    <h1>Página não encontrada</h1>
+                    <p>Desculpe, não há nada neste endereço.</p>
+                    <a href="/" class="btn btn-primary">Voltar à página inicial</a>
+                </div>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

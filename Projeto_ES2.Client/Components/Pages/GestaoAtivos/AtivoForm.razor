@@ -1,0 +1,199 @@
+﻿@using Projeto_ES2.Client.Components.DTOs
+@using Projeto_ES2.Client.Components.Models
+@inject IJSRuntime JSRuntime
+
+<EditForm Model="@Ativo" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Nome:</label>
+        <InputText @bind-Value="Ativo.Nome" class="form-control" />
+        <ValidationMessage For="@(() => Ativo.Nome)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tipo:</label>
+        <InputSelect @bind-Value="Ativo.Tipo" class="form-control" @onchange="OnTipoChanged">
+            @foreach (var tipo in Enum.GetValues<TipoAtivoFinanceiro>())
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => Ativo.Tipo)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data de Início:</label>
+        <InputDate @bind-Value="Ativo.DataInicio" class="form-control" />
+        <ValidationMessage For="@(() => Ativo.DataInicio)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data de Fim:</label>
+        <InputDate @bind-Value="Ativo.DataFim" class="form-control" />
+        <ValidationMessage For="@(() => Ativo.DataFim)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Imposto (%):</label>
+        <InputNumber @bind-Value="Ativo.Imposto" class="form-control" />
+        <ValidationMessage For="@(() => Ativo.Imposto)" />
+    </div>
+
+    @if (TipoSelecionado && Ativo.Tipo == TipoAtivoFinanceiro.DepositoPrazo)
+    {
+        <fieldset class="mb-4 border p-3 rounded">
+            <legend class="w-auto px-2">Depósito a Prazo</legend>
+            
+            <div class="mb-3">
+                <label class="form-label">Valor Inicial:</label>
+                <InputNumber @bind-Value="Ativo.Deposito.ValorInicial" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Deposito.ValorInicial)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Banco:</label>
+                <InputText @bind-Value="Ativo.Deposito.Banco" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Deposito.Banco)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Nº Conta:</label>
+                <InputText @bind-Value="Ativo.Deposito.NumeroConta" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Deposito.NumeroConta)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Titulares:</label>
+                <InputText @bind-Value="Ativo.Deposito.Titulares" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Deposito.Titulares)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Taxa de Juro Anual (%):</label>
+                <InputNumber @bind-Value="Ativo.Deposito.TaxaJuroAnual" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Deposito.TaxaJuroAnual)" />
+            </div>
+        </fieldset>
+    }
+    
+    @if (TipoSelecionado && Ativo.Tipo == TipoAtivoFinanceiro.FundoInvestimento)
+    {
+        <fieldset class="mb-4 border p-3 rounded">
+            <legend class="w-auto px-2">Fundo de Investimento</legend>
+            
+            <div class="mb-3">
+                <label class="form-label">Montante Investido:</label>
+                <InputNumber @bind-Value="Ativo.Fundo.MontanteInvestido" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Fundo.MontanteInvestido)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Taxa de Juro Padrão (%):</label>
+                <InputNumber @bind-Value="Ativo.Fundo.TaxaJuroPadrao" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Fundo.TaxaJuroPadrao)" />
+            </div>
+        </fieldset>
+    }
+    
+    @if (TipoSelecionado && Ativo.Tipo == TipoAtivoFinanceiro.ImovelArrendado)
+    {
+        <fieldset class="mb-4 border p-3 rounded">
+            <legend class="w-auto px-2">Imóvel Arrendado</legend>
+            
+            <div class="mb-3">
+                <label class="form-label">Localização:</label>
+                <InputText @bind-Value="Ativo.Imovel.Localizacao" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Imovel.Localizacao)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Valor do Imóvel:</label>
+                <InputNumber @bind-Value="Ativo.Imovel.Valor" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Imovel.Valor)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Renda Mensal:</label>
+                <InputNumber @bind-Value="Ativo.Imovel.Renda" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Imovel.Renda)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Valor do Condomínio:</label>
+                <InputNumber @bind-Value="Ativo.Imovel.Condominio" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Imovel.Condominio)" />
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Despesas Anuais:</label>
+                <InputNumber @bind-Value="Ativo.Imovel.Despesas" class="form-control" />
+                <ValidationMessage For="@(() => Ativo.Imovel.Despesas)" />
+            </div>
+        </fieldset>
+    }
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">@BotaoTexto</button>
+        <button type="button" class="btn btn-secondary ms-2" @onclick="CancelarComJS">Cancelar</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public AtivoFinanceiroNovoDTO Ativo { get; set; } = new();
+
+    [Parameter]
+    public string BotaoTexto { get; set; } = "Salvar";
+
+    [Parameter]
+    public EventCallback<AtivoFinanceiroNovoDTO> OnSubmit { get; set; }
+
+    [Parameter]
+    public string ReturnUrl { get; set; } = "/ativos";
+
+    [Inject]
+    public NavigationManager Navigation { get; set; }
+
+    private bool TipoSelecionado { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        // Verifica se o tipo já está definido (caso seja edição)
+        TipoSelecionado = Ativo.Id != Guid.Empty || Ativo.Tipo != default;
+        
+        // Garante que os objetos internos estão inicializados
+        Ativo.Deposito ??= new DepositoPrazoDTO();
+        Ativo.Fundo ??= new FundoInvestimentoDTO();
+        Ativo.Imovel ??= new ImovelArrendadoDTO();
+    }
+
+    private void OnTipoChanged(ChangeEventArgs e)
+    {
+        if (e.Value != null)
+        {
+            TipoSelecionado = true;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await OnSubmit.InvokeAsync(Ativo);
+    }
+
+    private async Task CancelarComJS()
+    {
+        // Primeiro tenta usar o JS para voltar
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("history.back");
+        }
+        catch
+        {
+            // Se falhar, usa o NavigationManager como fallback
+            Navigation.NavigateTo(ReturnUrl);
+        }
+    }
+}

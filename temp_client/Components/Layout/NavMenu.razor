@@ -1,0 +1,60 @@
+﻿@namespace Projeto_ES2.Components.Layout
+@using Microsoft.AspNetCore.Components.Authorization
+
+<div class="top-row ps-3 navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Projeto_ES2</a>
+
+        <button class="navbar-toggler" @onclick="ToggleMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+@if (menuAberto)
+{
+<div class="nav-scrollable bg-light">
+    <nav class="flex-column">
+        <!-- Home -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill"></span> Home
+            </NavLink>
+        </div>
+
+        <!-- Login -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="login">
+                <span class="bi bi-box-arrow-in-right"></span> Login
+            </NavLink>
+        </div>
+
+        <!-- Gerir Ativos -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ativos" Match="NavLinkMatch.Prefix">
+                <span class="bi bi-list-ul"></span> Gerir Ativos
+            </NavLink>
+        </div>
+
+        <!-- Apenas para Admin ou UserManager -->
+        <AuthorizeView Roles="Admin,UserManager">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="gerenciar-usuarios">
+                        <span class="bi bi-people-fill"></span> Gerenciar Usuários
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+    </nav>
+</div>
+}
+
+@code {
+private bool menuAberto = false;
+
+private void ToggleMenu()
+{
+    menuAberto = !menuAberto;
+}
+}

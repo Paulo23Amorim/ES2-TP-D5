@@ -1,0 +1,72 @@
+﻿@page "/detalhes-ativo/{id}"
+@using Microsoft.AspNetCore.Authorization
+@using Projeto_ES2.Components.Models
+@attribute [Authorize]
+@inject HttpClient Http
+
+@if (ativo == null)
+{
+<p>Carregando...</p>
+}
+else
+{
+<div class="card">
+    <div class="card-header">
+        <h3>@ativo.Nome</h3>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Tipo: @ativo.Tipo</h5>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Data Início:</strong> @ativo.DataInicio.ToShortDateString()</p>
+                @if (ativo.DataFim.HasValue) @* Corrigido para nullable *@
+                {
+                    <p><strong>Data Fim:</strong> @ativo.DataFim.Value.ToShortDateString()</p>
+                }
+                else
+                {
+                    <p><strong>Data Fim:</strong> N/A</p>
+                }
+            </div>
+        </div>
+
+        @if (ativo.Tipo == TipoAtivoFinanceiro.DepositoPrazo && ativo.DepositoPrazo != null)
+        {
+            <div class="mt-4">
+                <h4>Detalhes do Depósito a Prazo</h4>
+                <p><strong>Banco:</strong> @ativo.DepositoPrazo.Banco</p>
+                <p><strong>Número da Conta:</strong> @ativo.DepositoPrazo.NumeroConta</p>
+                <p><strong>Taxa de Juro Anual:</strong> @($"{ativo.DepositoPrazo.TaxaJuroAnual * 100:N2}%")</p>
+            </div>
+        }
+        else if (ativo.Tipo == TipoAtivoFinanceiro.FundoInvestimento && ativo.FundoInvestimento != null)
+        {
+            <div class="mt-4">
+                <h4>Detalhes do Fundo de Investimento</h4>
+                <p><strong>Taxa de Juro Padrão:</strong> @(ativo.FundoInvestimento.TaxaJuroPadrao.ToString("0.00%"))</p>
+            </div>
+        }
+        else if (ativo.Tipo == TipoAtivoFinanceiro.ImovelArrendado && ativo.ImovelArrendado != null)
+        {
+            <div class="mt-4">
+                <h4>Detalhes do Imóvel Arrendado</h4>
+                <p><strong>Localização:</strong> @ativo.ImovelArrendado.Localizacao</p>
+                <p><strong>Valor da Renda:</strong> @($"R$ {ativo.ImovelArrendado.ValorRenda:N2}")</p>
+            </div>
+        }
+    </div>
+</div>
+}
+
+@code {
+[Parameter]
+public Guid id { get; set; }
+
+private AtivoFinanceiro? ativo; @* Adicionado nullable *@
+
+protected override async Task OnInitializedAsync()
+{
+    ativo = await Http.GetFromJsonAsync<AtivoFinanceiro>($"api/AtivoFinanceiro/{id}");
+}
+}
