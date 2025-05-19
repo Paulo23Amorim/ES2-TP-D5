@@ -1,0 +1,26 @@
+﻿@namespace Projeto_ES2.Client.Components.Layout
+@inherits LayoutComponentBase
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 bg-light p-3 sidebar">
+            <NavMenu />
+        </div>
+        <div class="col-md-9">
+            <header class="border-bottom mb-4 py-2">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </header>
+            <main>
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
+        </div>
+    </div>
+</div>
+
+<div id="blazor-error-ui">
+    Ocorreu um erro.
+    <a href="" class="reload">Recarregar</a>
+    <a class="dismiss">🗙</a>
+</div>

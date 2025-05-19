@@ -1,0 +1,20 @@
+﻿@if (Mostrar)
+{
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <h3>Adicionar Ativo</h3>
+            <p>Formulário virá aqui futuramente.</p>
+            <button class="btn btn-secondary" @onclick="Fechar">Fechar</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool Mostrar { get; set; }
+    [Parameter] public EventCallback OnFechar { get; set; }
+
+    private async Task Fechar()
+    {
+        await OnFechar.InvokeAsync();
+    }
+}

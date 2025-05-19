@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Projeto_ES2.Server</name>
+    </assembly>
+    <members>
+        <member name="T:Projeto_es2.Migrations.FixMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.FixMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.FixMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.FixMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Projeto_es2.Migrations.CorrigirUtilizador">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CorrigirUtilizador.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CorrigirUtilizador.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CorrigirUtilizador.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Projeto_es2.Migrations.CreateDBMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CreateDBMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CreateDBMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Projeto_es2.Migrations.CreateDBMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

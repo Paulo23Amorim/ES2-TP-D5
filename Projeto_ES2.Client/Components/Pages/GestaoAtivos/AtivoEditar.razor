@@ -1,0 +1,62 @@
+﻿@page "/ativos/editar/{Id:guid}"
+
+@using Projeto_ES2.Client.Components.DTOs
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<h3>Editar Ativo</h3>
+
+@if (AtivoSelecionado == null)
+{
+<p><em>Carregando...</em></p>
+}
+else
+{
+<AtivoFormEditar Ativo="@AtivoSelecionado" OnSalvar="SalvarEdicao" OnCancelar="CancelarEdicao" />
+}
+
+@code {
+[Parameter]
+public Guid Id { get; set; }
+
+private AtivoFinanceiroNovoDTO? AtivoSelecionado;
+
+protected override async Task OnInitializedAsync()
+{
+    try
+    {
+        var response = await Http.GetFromJsonAsync<AtivoFinanceiroNovoDTO>($"api/AtivoFinanceiro/{Id}");
+        AtivoSelecionado = response;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine($"Erro ao carregar ativo: {ex.Message}");
+    }
+}
+
+private async Task SalvarEdicao(AtivoFinanceiroNovoDTO ativoEditado)
+{
+    try
+    {
+        var response = await Http.PutAsJsonAsync($"api/AtivoFinanceiro/{Id}", ativoEditado);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/ativos");
+        }
+        else
+        {
+            Console.Error.WriteLine("Erro ao salvar alterações.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine($"Erro ao salvar ativo: {ex.Message}");
+    }
+}
+
+private void CancelarEdicao()
+{
+    Navigation.NavigateTo("/ativos");
+}
+}

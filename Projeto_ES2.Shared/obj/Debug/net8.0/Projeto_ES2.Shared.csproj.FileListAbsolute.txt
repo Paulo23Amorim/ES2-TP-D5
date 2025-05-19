@@ -1,0 +1,12 @@
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\bin\Debug\net8.0\Projeto_ES2.Shared.deps.json
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\bin\Debug\net8.0\Projeto_ES2.Shared.dll
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\bin\Debug\net8.0\Projeto_ES2.Shared.pdb
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.AssemblyInfoInputs.cache
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.AssemblyInfo.cs
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.csproj.CoreCompileInputs.cache
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.sourcelink.json
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.dll
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\refint\Projeto_ES2.Shared.dll
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\Projeto_ES2.Shared.pdb
+C:\Users\aldas\RiderProjects\ES2-TP-D5\Projeto_ES2.Shared\obj\Debug\net8.0\ref\Projeto_ES2.Shared.dll

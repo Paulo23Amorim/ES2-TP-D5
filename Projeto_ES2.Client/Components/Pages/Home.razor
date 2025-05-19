@@ -1,0 +1,37 @@
+﻿@page "/"
+@inject HttpClient Http
+
+
+<PageTitle>Início</PageTitle>
+
+<h1>Bem-vindo ao Sistema de Gestão de Ativos Financeiros</h1>
+
+<p>Gerencie seus ativos, investimentos e finanças com facilidade.</p>
+
+@code {
+    private bool loading = true;
+    private string ultimoInvestimento = "Nenhum investimento recente";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarDadosFinanceiros();
+    }
+
+    private async Task CarregarDadosFinanceiros()
+    {
+        try
+        {
+// teste
+            await Task.Delay(1000); // Simulando carregamento
+            ultimoInvestimento = "Ações da Tesla - 500€";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar dados: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}
