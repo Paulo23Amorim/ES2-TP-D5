@@ -7,11 +7,11 @@ namespace Projeto_ES2.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UtilizadorController : ControllerBase
+public class UtilizadoresController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
 
-    public UtilizadorController(ApplicationDbContext context)
+    public UtilizadoresController(ApplicationDbContext context)
     {
         _context = context;
     }
