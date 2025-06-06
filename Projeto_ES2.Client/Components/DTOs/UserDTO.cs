@@ -11,6 +11,6 @@ public class UserDTO
     public string nome { get; set; }
     public string email { get; set; }
 
-    public int Tipo { get; set; } // Recebe o valor numérico
+    public int Tipo { get; set; }
 
 }

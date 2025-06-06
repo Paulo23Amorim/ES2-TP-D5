@@ -1,0 +1,10 @@
+/Projeto_ES2.sln
+
+# Ignorar diretórios de build
+bin/
+obj/
+
+# Ignorar ficheiros temporários
+*.gz
+*.dll
+*.pdb

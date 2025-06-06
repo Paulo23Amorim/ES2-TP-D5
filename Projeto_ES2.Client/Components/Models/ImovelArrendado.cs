@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_ES2.Client.Components.Models;
 
+[Table("ImoveisArrendados")]
 public class ImovelArrendado
 {
     [Key]

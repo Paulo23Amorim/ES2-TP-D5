@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_ES2.Client.Components.Models;
 
@@ -9,6 +10,8 @@ public class Utilizador
     
     public String nome { get; set; } = string.Empty;
     public String email { get; set; } = string.Empty;
+    
+    [Column("password")]
     public string PasswordHash { get; set; } = string.Empty;
     
     public TipoUtilizador TipoUtilizador { get; set; }

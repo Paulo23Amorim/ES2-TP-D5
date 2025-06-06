@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_ES2.Client.Components.Models;
 
+[Table("DepositosPrazo")]
 public class DepositoPrazo
 {
     [Key]
-    public Guid Id { get; set; } //PascalCase id -> Id
+    public Guid Id { get; set; } 
 
     [ForeignKey("AtivoFinanceiro")]
-    public Guid AtivoId { get; set; } //ativo_id -> AtivoId
+    public Guid AtivoId { get; set; } 
     public required AtivoFinanceiro AtivoFinanceiro { get; set; }
 
     public decimal ValorInicial { get; set; }
