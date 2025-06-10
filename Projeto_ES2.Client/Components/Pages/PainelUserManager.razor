@@ -1,0 +1,10 @@
+@page "/painel-usermanager"
+@attribute [Authorize(Roles = "UserManager")]
+
+<h3>Painel do User Manager</h3>
+
+<p>Bem-vindo, gestor de utilizadores!</p>
+
+<ul>
+    <li><NavLink href="/gerir-utilizadores">Gerir Utilizadores</NavLink></li>
+</ul>

@@ -1,0 +1,238 @@
+@page "/gerir-utilizadores"
+@using System.Security.Claims
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IJSRuntime JSRuntime
+@using Projeto_ES2.Client.Components.Models
+@using Projeto_ES2.Client.Components.DTOs
+@attribute [Authorize(Roles = "Admin,UserManager")]
+
+<h3>Gestão de Utilizadores</h3>
+
+@if (role == "Admin" || role == "UserManager")
+{
+    <button class="btn btn-success mb-3" @onclick="() => showModal = true">Criar Utilizador</button>
+}
+
+@if (utilizadores == null)
+{
+    <p><em>A carregar utilizadores...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var u in utilizadores)
+        {
+            <tr>
+                <td>@u.nome</td>
+                <td>@u.email</td>
+                <td>@u.TipoUtilizador</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-2" @onclick="@(() => AbrirEdicao(u))">Editar</button>
+                    <button class="btn btn-sm btn-danger" @onclick="@(() => ApagarUtilizador(u.user_id))">Apagar</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<!-- MODAL DE CRIAÇÃO -->
+@if (showModal)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+                <h5 class="modal-title">Novo Utilizador</h5>
+
+                <div class="mb-2">
+                    <label>Nome:</label>
+                    <InputText class="form-control" @bind-Value="novoUtilizador.nome" />
+                </div>
+                <div class="mb-2">
+                    <label>Email:</label>
+                    <InputText class="form-control" @bind-Value="novoUtilizador.email" />
+                </div>
+                <div class="mb-2">
+                    <label>Password:</label>
+                    <InputText class="form-control" @bind-Value="password" type="password" />
+                </div>
+                <div class="mb-2">
+                    <label>Tipo:</label>
+                    <select class="form-select" @bind="novoUtilizador.TipoUtilizador">
+                        @if (role == "Admin")
+                        {
+                            @foreach (var tipo in Enum.GetValues<TipoUtilizador>())
+                            {
+                                <option value="@tipo">@tipo</option>
+                            }
+                        }
+                        else if (role == "UserManager")
+                        {
+                            <option value="Utilizador">Utilizador</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-secondary me-2" @onclick="() => showModal = false">Cancelar</button>
+                    <button class="btn btn-primary" @onclick="CriarUtilizadorAsync">Criar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (showEditModal && utilizadorEmEdicao != null)
+{
+<div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content p-4">
+            <h5 class="modal-title">Editar Utilizador</h5>
+
+            <div class="mb-2">
+                <label>Nome:</label>
+                <InputText class="form-control" @bind-Value="utilizadorEmEdicao.nome" />
+            </div>
+            <div class="mb-2">
+                <label>Email:</label>
+                <InputText class="form-control" @bind-Value="utilizadorEmEdicao.email" />
+            </div>
+            @if (role == "Admin")
+            {
+            <div class="mb-2">
+                <label>Tipo:</label>
+                <select class="form-select" @bind="utilizadorEmEdicao.TipoUtilizador">
+                    @foreach (var tipo in Enum.GetValues<TipoUtilizador>())
+                    {
+                    <option value="@tipo">@tipo</option>
+                    }
+                </select>
+            </div>
+            }
+
+            <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-secondary me-2" @onclick="() => showEditModal = false">Cancelar</button>
+                <button class="btn btn-primary" @onclick="GuardarAlteracoesAsync">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+@code {
+    private List<Utilizador>? utilizadores;
+    private string? role;
+    private bool showModal = false;
+    private bool showEditModal = false;
+    private Utilizador? utilizadorEmEdicao;
+
+    private Utilizador novoUtilizador = new();
+    private string password = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        role = authState.User.FindFirst(c => c.Type == ClaimTypes.Role)?.Value;
+
+        await CarregarUtilizadoresAsync();
+    }
+
+    private async Task CarregarUtilizadoresAsync()
+    {
+        try
+        {
+            utilizadores = await Http.GetFromJsonAsync<List<Utilizador>>("api/Utilizadores");
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Erro ao carregar utilizadores: {ex.Message}");
+        }
+    }
+
+    private async Task ApagarUtilizador(Guid id)
+    {
+        var confirmar = await JSRuntime.InvokeAsync<bool>("confirm", "Tem a certeza que quer apagar este utilizador?");
+        if (!confirmar) return;
+
+        var response = await Http.DeleteAsync($"api/Utilizadores/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            utilizadores = utilizadores!.Where(u => u.user_id != id).ToList();
+        }
+        else
+        {
+            Console.Error.WriteLine("Erro ao apagar utilizador.");
+        }
+    }
+
+    private async Task CriarUtilizadorAsync()
+    {
+        try
+        {
+            var dto = new RegisterDTO
+            {
+                Name = novoUtilizador.nome,
+                Email = novoUtilizador.email,
+                Password = password,
+                Tipo = novoUtilizador.TipoUtilizador
+            };
+
+            var response = await Http.PostAsJsonAsync("api/auth/register", dto);
+            if (response.IsSuccessStatusCode)
+            {
+                showModal = false;
+                password = "";
+                novoUtilizador = new();
+                await CarregarUtilizadoresAsync();
+            }
+            else
+            {
+                var msg = await response.Content.ReadAsStringAsync();
+                Console.Error.WriteLine("Erro: " + msg);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine("Erro ao criar utilizador: " + ex.Message);
+        }
+    }
+    
+    private void AbrirEdicao(Utilizador u)
+    {
+        utilizadorEmEdicao = new Utilizador
+        {
+            user_id = u.user_id,
+            nome = u.nome,
+            email = u.email,
+            TipoUtilizador = u.TipoUtilizador
+        };
+        showEditModal = true;
+    }
+
+    private async Task GuardarAlteracoesAsync()
+    {
+        if (utilizadorEmEdicao == null) return;
+
+        var response = await Http.PutAsJsonAsync($"api/utilizadores/{utilizadorEmEdicao.user_id}", utilizadorEmEdicao);
+        if (!response.IsSuccessStatusCode)
+        {
+            Console.Error.WriteLine("Erro ao atualizar utilizador.");
+            return;
+        }
+
+        showEditModal = false;
+        await CarregarUtilizadoresAsync();
+    }
+}

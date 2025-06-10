@@ -1,0 +1,20 @@
+@page "/redirect"
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+
+<p>A redirecionar...</p>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = state.User;
+
+        if (user.IsInRole("Admin"))
+            Navigation.NavigateTo("/painel-admin", forceLoad: true);
+        else if (user.IsInRole("UserManager"))
+            Navigation.NavigateTo("/painel-usermanager", forceLoad: true);
+        else
+            Navigation.NavigateTo("/painel-cliente", forceLoad: true);
+    }
+}

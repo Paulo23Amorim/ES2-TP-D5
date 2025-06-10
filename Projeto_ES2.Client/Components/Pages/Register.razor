@@ -1,6 +1,9 @@
 ﻿@page "/register"
 @using System.ComponentModel.DataAnnotations
+@using Projeto_ES2.Client.Components.DTOs
+@using Projeto_ES2.Client.Services
 @inject NavigationManager Navigation
+@inject AuthServiceClient AuthService
 
 <h3 class="text-xl font-bold mb-4">Registo</h3>
 
@@ -30,14 +33,29 @@
 
 @code {
     private RegisterModel registerModel = new();
+    private string loginError = string.Empty;
+
 
     private async Task HandleRegister()
     {
-        // Aqui podes chamar a API ou lógica de registo
-        Console.WriteLine($"Registo com {registerModel.Email} / {registerModel.Password}");
+        var dto = new RegisterDTO
+        {
+            Name = registerModel.Name,
+            Email = registerModel.Email,
+            Password = registerModel.Password
+            // TipoUtilizador por defeito já é "Utilizador"
+        };
 
-        // Exemplo de redirecionamento após registo
-        Navigation.NavigateTo("/login");
+        var success = await AuthService.RegisterAsync(dto);
+
+        if (success)
+        {
+            Navigation.NavigateTo("/login");
+        }
+        else
+        {
+            loginError = "Erro ao registar utilizador.";
+        }
     }
 
     public class RegisterModel
