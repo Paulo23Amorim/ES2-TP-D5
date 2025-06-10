@@ -59,16 +59,13 @@
                 
                 // Remove possíveis aspas que vieram no token
                 await LocalStorage.SetItemAsync("authToken", result.Token);
-
-
-
+                
                 await LocalStorage.SetItemAsync("user", result.User);
                 
                 // Atualiza o estado de autenticação
                 ((CustomAuthStateProvider)AuthStateProvider).NotifyUserAuthentication(result.Token);
                 
-                Navigation.NavigateTo("/ativos");
-
+                Navigation.NavigateTo("/redirect", forceLoad: true);
             }
             else
             {

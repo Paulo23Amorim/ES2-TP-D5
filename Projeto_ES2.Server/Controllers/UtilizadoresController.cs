@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Projeto_ES2.Client.Components.Models;
 using Projeto_ES2.Server.Data;
@@ -37,13 +38,22 @@ public class UtilizadoresController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin,UserManager")]
     public async Task<ActionResult<Utilizador>> CreateUtilizador(Utilizador utilizador)
     {
+        if (User.IsInRole("UserManager") && utilizador.TipoUtilizador != TipoUtilizador.Utilizador)
+        {
+            return Forbid("UserManager só pode criar utilizadores do tipo 'Utilizador' (cliente).");
+        }
+
+        utilizador.user_id = Guid.NewGuid();
+
         _context.Utilizadores.Add(utilizador);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetUtilizadores), new { id = utilizador.user_id }, utilizador);
+        return CreatedAtAction(nameof(GetUtilizador), new { id = utilizador.user_id }, utilizador);
     }
+
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Utilizador>> GetUtilizador(Guid id)
@@ -58,13 +68,31 @@ public class UtilizadoresController : ControllerBase
         return utilizador;
     }
 
-    // UPDATE: Atualiza um utilizador existente
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin,UserManager")]
     public async Task<IActionResult> UpdateUtilizador(Guid id, Utilizador utilizador)
     {
         if (id != utilizador.user_id)
         {
-            return BadRequest();
+            return BadRequest("ID do utilizador não corresponde.");
+        }
+
+        // Verifica se é UserManager e está a tentar editar algo que não pode
+        if (User.IsInRole("UserManager") && utilizador.TipoUtilizador != TipoUtilizador.Utilizador)
+        {
+            return Forbid("UserManager só pode editar utilizadores do tipo 'Utilizador'.");
+        }
+
+        // Protege contra alteração forçada da role (ex: UserManager a mudar alguém para Admin)
+        var existente = await _context.Utilizadores.AsNoTracking().FirstOrDefaultAsync(u => u.user_id == id);
+        if (existente == null)
+        {
+            return NotFound("Utilizador não encontrado.");
+        }
+
+        if (User.IsInRole("UserManager") && existente.TipoUtilizador != TipoUtilizador.Utilizador)
+        {
+            return Forbid("UserManager não tem permissão para editar este utilizador.");
         }
 
         _context.Entry(utilizador).State = EntityState.Modified;
@@ -87,6 +115,7 @@ public class UtilizadoresController : ControllerBase
 
         return NoContent();
     }
+
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUtilizador(Guid id)

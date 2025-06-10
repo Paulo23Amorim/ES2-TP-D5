@@ -1,0 +1,10 @@
+@page "/painel-cliente"
+@attribute [Authorize(Roles = "Utilizador")]
+
+<h3>Painel do Cliente</h3>
+
+<p>Bem-vindo! Aqui estão os seus ativos.</p>
+
+<ul>
+    <li><NavLink href="/ativos">Ver Ativos</NavLink></li>
+</ul>

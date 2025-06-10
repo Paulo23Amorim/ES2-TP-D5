@@ -36,6 +36,11 @@ public class AuthService
         
         return true;
     }
+    
+    public string HashPassword(string password)
+    {
+        return BCrypt.Net.BCrypt.HashPassword(password);
+    }
 
     public async Task<Utilizador?> BuscarPorEmailAsync(string email)
     {

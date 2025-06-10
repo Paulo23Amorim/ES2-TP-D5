@@ -20,6 +20,8 @@ builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>(
     sp => sp.GetRequiredService<CustomAuthStateProvider>());
 builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthServiceClient>();
+
 
 // 2) JSON global com enum→string
 var jsonOptions = new JsonSerializerOptions

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Projeto_ES2.Client.Components.DTOs;
 using Projeto_ES2.Client.Components.Models;
+using Projeto_ES2.Server.Data;
 using Projeto_ES2.Server.Services;
 
 namespace Projeto_ES2.Server.Controllers;
@@ -17,15 +18,17 @@ public class AuthController : ControllerBase
     private readonly AuthService _authService;
     private readonly IConfiguration _configuration;
     private readonly ILogger<AuthController> _logger;
-
+    private readonly ApplicationDbContext _context;
     public AuthController(
         AuthService authService, 
         IConfiguration configuration,
-        ILogger<AuthController> logger)
+        ILogger<AuthController> logger,
+        ApplicationDbContext context)
     {
         _authService = authService;
         _configuration = configuration;
         _logger = logger;
+        _context = context;
     }
 
     [HttpPost("login")]
@@ -114,7 +117,7 @@ public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
                 nome = request.Name,
                 email = request.Email,
                 TipoUtilizador = request.Tipo,
-                PasswordHash = string.Empty // Será definido no AuthService
+                PasswordHash = string.Empty 
             };
 
             var resultado = await _authService.RegisterAsync(novoUtilizador, request.Password);
@@ -160,6 +163,13 @@ public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
             return StatusCode(500, new { Message = "Ocorreu um erro ao obter o perfil" });
         }
     }
+    
+    public class ResetPasswordRequest
+    {
+        public Guid UserId { get; set; }
+        public string NovaPassword { get; set; } = string.Empty;
+    }
+
 
     private string GenerateJwtToken(Utilizador utilizador, string jwtKey)
     {

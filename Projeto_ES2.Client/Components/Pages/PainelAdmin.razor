@@ -1,0 +1,11 @@
+@page "/painel-admin"
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Painel do Administrador</h3>
+
+<p>Bem-vindo, administrador!</p>
+
+<ul>
+    <li><NavLink href="/gerir-utilizadores">Gerir Utilizadores</NavLink></li>
+    <li><NavLink href="/ativos">Gerir Ativos</NavLink></li>
+</ul>
