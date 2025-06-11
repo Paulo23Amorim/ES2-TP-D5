@@ -21,7 +21,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>Gestão de Ativos Financeiros</h3>
 
-                <AuthorizeView Roles="Admin,UserManager" Context="managerAuth">
+                <AuthorizeView Context="managerAuth">
                     <Authorized Context="managerContent">
                         <button class="btn btn-primary" @onclick="OpenCreateModal">
                             <i class="bi bi-plus-circle"></i> Novo Ativo
@@ -48,6 +48,9 @@
                                 <th>Tipo</th>
                                 <th>Data Início</th>
                                 <th>Valor</th>
+                                <AuthorizeView Roles="Admin">
+                                    <th>Dono</th>
+                                </AuthorizeView>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -59,6 +62,10 @@
                                     <td>@GetTipoAtivoDisplay(ativo.Tipo)</td>
                                     <td>@ativo.DataInicio.ToShortDateString()</td>
                                     <td>@GetValorAtivo(ativo)</td>
+                                    <AuthorizeView Roles="Admin">
+                                        <td>@ativo.Utilizador?.nome (@ativo.Utilizador?.email)</td>
+                                    </AuthorizeView>
+
                                     <td>
                                         <button class="btn btn-sm btn-info me-2" @onclick="() => ShowDetails(ativo.Id)">
                                             <i class="bi bi-eye"></i> Detalhes
@@ -240,6 +247,7 @@
             
                 try {
                     ativos = await response.Content.ReadFromJsonAsync<List<AtivoFinanceiroDTO>>() ?? new();
+                    Console.WriteLine($"[DEBUG] Ativos recebidos: {ativos.Count}");
                     Console.WriteLine($"Carregados {ativos.Count} ativos");
                 }
                 catch (Exception jsonEx) {

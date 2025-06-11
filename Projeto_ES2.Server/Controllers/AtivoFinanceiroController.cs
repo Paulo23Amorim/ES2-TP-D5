@@ -20,14 +20,36 @@ public class AtivoFinanceiroController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<AtivoFinanceiro>>> GetAtivosFinanceiros()
     {
-        return await _context.AtivosFinanceiros
+        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
+            return Unauthorized("ID do utilizador inválido ou ausente.");
+
+        var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.user_id == userId);
+        if (utilizador == null)
+            return NotFound("Utilizador não encontrado.");
+
+        // INICIALIZA a query com o Include antes do Where
+        var query = _context.AtivosFinanceiros
             .Include(a => a.DepositoPrazo)
             .Include(a => a.FundoInvestimento)
             .Include(a => a.ImovelArrendado)
-            .ToListAsync();
+            .Include(a => a.Utilizador) // <- Isto tem de vir ANTES de qualquer .Where()
+            .AsQueryable(); // Garante tipo correto
+
+        // Aplica filtro SE não for admin
+        if (utilizador.TipoUtilizador != TipoUtilizador.Admin)
+        {
+            query = query.Where(a => a.UtilizadorId == userId);
+        }
+
+        return await query.ToListAsync();
     }
+
+
+
 
     [HttpGet("{id}")]
     public async Task<ActionResult<AtivoFinanceiro>> GetAtivoFinanceiro(Guid id)
@@ -42,7 +64,7 @@ public class AtivoFinanceiroController : ControllerBase
     }
 
     [HttpPost("novo")]
-    [Authorize(Roles = "Admin,UserManager")]
+    [Authorize]
     public async Task<IActionResult> CriarComDto([FromBody] AtivoFinanceiroNovoDTO dto)
     {
         if (!ModelState.IsValid)
@@ -51,12 +73,24 @@ public class AtivoFinanceiroController : ControllerBase
         if (!User.Identity.IsAuthenticated)
             return Unauthorized("Usuário não autenticado");
 
-        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) 
-                        ?? User.FindFirst("sub") 
-                        ?? User.FindFirst("id");
-    
-        if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var utilizadorId))
-            return Unauthorized("ID do usuário inválido ou não encontrado");
+        Guid utilizadorId;
+
+        // Se o DTO vier com UtilizadorId (ex: Admin a criar para alguém), usa esse
+        if (dto.UtilizadorId.HasValue)
+        {
+            utilizadorId = dto.UtilizadorId.Value;
+        }
+        else
+        {
+            // Caso contrário, usa o ID do token JWT
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) 
+                              ?? User.FindFirst("sub") 
+                              ?? User.FindFirst("id");
+
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out utilizadorId))
+                return Unauthorized("ID do usuário inválido ou não encontrado");
+        }
+
 
         var ativo = new AtivoFinanceiro
         {

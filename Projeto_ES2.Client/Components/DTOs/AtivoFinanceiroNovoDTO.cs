@@ -11,6 +11,7 @@ public class AtivoFinanceiroNovoDTO
 
     public DateTime? DataFim { get; set; } = DateTime.UtcNow; // Valor padrão UTC
     public decimal Imposto { get; set; }
+    public Guid? UtilizadorId { get; set; }
 
     public DepositoPrazoDTO? Deposito { get; set; }
     public FundoInvestimentoDTO? Fundo { get; set; }

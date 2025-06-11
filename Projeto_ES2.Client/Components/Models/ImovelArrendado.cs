@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Projeto_ES2.Client.Components.Models;
 
@@ -11,7 +12,8 @@ public class ImovelArrendado
 
     [ForeignKey("AtivoFinanceiro")]
     public Guid AtivoId { get; set; }
-    public required AtivoFinanceiro AtivoFinanceiro { get; set; }
+    [JsonIgnore]
+    public AtivoFinanceiro? AtivoFinanceiro { get; set; }
 
     public required string Localizacao { get; set; }
     public required decimal ValorImovel { get; set; }
