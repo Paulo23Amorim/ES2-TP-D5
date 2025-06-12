@@ -1,0 +1,61 @@
+@page "/admin/dashboard"
+@using Projeto_ES2.Client.Services
+@attribute [Authorize(Roles = "Admin")]
+@inject Projeto_ES2.Client.Services.DashboardService DashboardService
+
+<h3 class="mb-4">Dashboard de Estatísticas</h3>
+
+@if (stats == null)
+{
+    <p>A carregar dados...</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total de Utilizadores</div>
+                <div class="card-body">
+                    <h5 class="card-title">@stats.TotalUtilizadores</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total de Ativos Financeiros</div>
+                <div class="card-body">
+                    <h5 class="card-title">@stats.TotalAtivos</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h5>Top Tipos de Ativos</h5>
+    <ul class="list-group mb-4">
+        @foreach (var ativo in stats.AtivosPorTipo.OrderByDescending(a => a.Quantidade).Take(5))
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @ativo.Tipo
+                <span class="badge bg-secondary rounded-pill">@ativo.Quantidade</span>
+            </li>
+        }
+    </ul>
+
+    @if (stats.TotalAtivos > 5)
+    {
+        <p class="text-success">O número de ativos está a crescer bem!</p>
+    }
+    else
+    {
+        <p class="text-warning">Atenção: poucos ativos registados.</p>
+    }
+}
+
+@code {
+    private DashboardStats? stats;
+
+    protected override async Task OnInitializedAsync()
+    {
+        stats = await DashboardService.GetEstatisticasAsync();
+    }
+}
