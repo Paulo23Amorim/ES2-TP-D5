@@ -8,6 +8,8 @@ using Microsoft.OpenApi.Models;
 using Projeto_ES2.Server.Data;
 using Projeto_ES2.Server.Services;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // 1. Banco de dados
@@ -18,17 +20,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 // 2. Serviços de negócio
 builder.Services.AddScoped<AuthService>();
 
-// 3. Controllers + JSON (enum como string, ciclos ignorados, nulos omitidos)
+// 3. Controllers + JSON
 builder.Services.AddControllers()
     .AddJsonOptions(opts =>
     {
-        // enum → string
         opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-        // evita $id/$values
         opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        // omite propriedades nulas
         opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-        // indentado para dev
         opts.JsonSerializerOptions.WriteIndented = true;
     });
 
@@ -75,14 +73,28 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime         = true
         };
     });
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdmin",       p => p.RequireRole("Admin"));
     options.AddPolicy("RequireUserManager", p => p.RequireRole("UserManager"));
 });
 
-// 6. Pipeline
+// ✅ 6. CORS para o cliente
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5029") // porta do CLIENT
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
+
+// Ambiente dev
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
@@ -95,10 +107,12 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseBlazorFrameworkFiles();
+// Blazor
 app.UseStaticFiles();
 app.UseRouting();
+
+// ✅ Ativar CORS antes de auth
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();

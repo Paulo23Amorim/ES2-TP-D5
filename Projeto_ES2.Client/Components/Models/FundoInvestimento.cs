@@ -7,7 +7,9 @@ namespace Projeto_ES2.Client.Components.Models;
 public class FundoInvestimento
 {
     [Key]
-    public Guid Id { get; set; }
+    [Column("Id")]
+    public Guid Id { get; set; }  
+
 
     [ForeignKey("AtivoFinanceiro")]
     public Guid AtivoId { get; set; }

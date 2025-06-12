@@ -22,13 +22,13 @@ namespace Projeto_es2.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.AtivoFinanceiro", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("DataFim")
+                    b.Property<DateTime>("DataFim")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataInicio")
@@ -52,10 +52,10 @@ namespace Projeto_es2.Migrations
 
                     b.HasIndex("UtilizadorId");
 
-                    b.ToTable("AtivosFinanceiros");
+                    b.ToTable("AtivosFinanceiros", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.DepositoPrazo", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.DepositoPrazo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,10 +87,10 @@ namespace Projeto_es2.Migrations
                     b.HasIndex("AtivoId")
                         .IsUnique();
 
-                    b.ToTable("DepositosPrazos");
+                    b.ToTable("DepositosPrazos", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.FundoInvestimento", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.FundoInvestimento", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,10 +110,10 @@ namespace Projeto_es2.Migrations
                     b.HasIndex("AtivoId")
                         .IsUnique();
 
-                    b.ToTable("FundosInvestimentos");
+                    b.ToTable("FundosInvestimentos", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.ImovelArrendado", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.ImovelArrendado", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,10 +143,10 @@ namespace Projeto_es2.Migrations
                     b.HasIndex("AtivoId")
                         .IsUnique();
 
-                    b.ToTable("ImovelArrendados");
+                    b.ToTable("ImovelArrendados", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Imposto", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Imposto", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,10 +165,10 @@ namespace Projeto_es2.Migrations
 
                     b.HasIndex("AtivoId");
 
-                    b.ToTable("Impostos");
+                    b.ToTable("Impostos", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Invoice", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Invoice", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -194,10 +194,10 @@ namespace Projeto_es2.Migrations
 
                     b.HasIndex("UtilizadorId");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Juros", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Juros", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -216,18 +216,14 @@ namespace Projeto_es2.Migrations
 
                     b.HasIndex("FundoId");
 
-                    b.ToTable("Juros");
+                    b.ToTable("Juros", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Utilizador", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Utilizador", b =>
                 {
                     b.Property<Guid>("user_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("TipoUtilizador")
                         .HasColumnType("integer");
@@ -240,14 +236,18 @@ namespace Projeto_es2.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("user_id");
 
-                    b.ToTable("Utilizadores");
+                    b.ToTable("Utilizadores", (string)null);
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.AtivoFinanceiro", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.Utilizador", "Utilizador")
+                    b.HasOne("Projeto_ES2.Components.Models.Utilizador", "Utilizador")
                         .WithMany("AtivosFinanceiros")
                         .HasForeignKey("UtilizadorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -256,42 +256,42 @@ namespace Projeto_es2.Migrations
                     b.Navigation("Utilizador");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.DepositoPrazo", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.DepositoPrazo", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
+                    b.HasOne("Projeto_ES2.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
                         .WithOne("DepositoPrazo")
-                        .HasForeignKey("Projeto_ES2.Client.Components.Models.DepositoPrazo", "AtivoId")
+                        .HasForeignKey("Projeto_ES2.Components.Models.DepositoPrazo", "AtivoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AtivoFinanceiro");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.FundoInvestimento", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.FundoInvestimento", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
+                    b.HasOne("Projeto_ES2.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
                         .WithOne("FundoInvestimento")
-                        .HasForeignKey("Projeto_ES2.Client.Components.Models.FundoInvestimento", "AtivoId")
+                        .HasForeignKey("Projeto_ES2.Components.Models.FundoInvestimento", "AtivoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AtivoFinanceiro");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.ImovelArrendado", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.ImovelArrendado", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
+                    b.HasOne("Projeto_ES2.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
                         .WithOne("ImovelArrendado")
-                        .HasForeignKey("Projeto_ES2.Client.Components.Models.ImovelArrendado", "AtivoId")
+                        .HasForeignKey("Projeto_ES2.Components.Models.ImovelArrendado", "AtivoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AtivoFinanceiro");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Imposto", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Imposto", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
+                    b.HasOne("Projeto_ES2.Components.Models.AtivoFinanceiro", "AtivoFinanceiro")
                         .WithMany("Impostos")
                         .HasForeignKey("AtivoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -300,9 +300,9 @@ namespace Projeto_es2.Migrations
                     b.Navigation("AtivoFinanceiro");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Invoice", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Invoice", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.Utilizador", "Utilizador")
+                    b.HasOne("Projeto_ES2.Components.Models.Utilizador", "Utilizador")
                         .WithMany("Invoices")
                         .HasForeignKey("UtilizadorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,9 +311,9 @@ namespace Projeto_es2.Migrations
                     b.Navigation("Utilizador");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Juros", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Juros", b =>
                 {
-                    b.HasOne("Projeto_ES2.Client.Components.Models.FundoInvestimento", "FundoInvestimento")
+                    b.HasOne("Projeto_ES2.Components.Models.FundoInvestimento", "FundoInvestimento")
                         .WithMany("Juros")
                         .HasForeignKey("FundoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -322,7 +322,7 @@ namespace Projeto_es2.Migrations
                     b.Navigation("FundoInvestimento");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.AtivoFinanceiro", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.AtivoFinanceiro", b =>
                 {
                     b.Navigation("DepositoPrazo");
 
@@ -333,12 +333,12 @@ namespace Projeto_es2.Migrations
                     b.Navigation("Impostos");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.FundoInvestimento", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.FundoInvestimento", b =>
                 {
                     b.Navigation("Juros");
                 });
 
-            modelBuilder.Entity("Projeto_ES2.Client.Components.Models.Utilizador", b =>
+            modelBuilder.Entity("Projeto_ES2.Components.Models.Utilizador", b =>
                 {
                     b.Navigation("AtivosFinanceiros");
 
