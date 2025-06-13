@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Projeto_ES2.Client.Components.Models;
 using Projeto_ES2.Server.Data;
-using Projeto_ES2.Client.Components.Models; // ou o namespace onde está o enum TipoUtilizador
-
-
 
 namespace Projeto_ES2.Server.Controllers;
 
@@ -25,10 +21,6 @@ public class AdminController : ControllerBase
     public async Task<IActionResult> GetDashboardStats()
     {
         var totalUtilizadores = await _context.Utilizadores.CountAsync();
-        var totalClientes = await _context.Utilizadores
-            .Where(u => u.TipoUtilizador == TipoUtilizador.Utilizador)
-            .CountAsync();
-        
         var totalAtivos = await _context.AtivosFinanceiros.CountAsync();
 
         var ativosPorTipo = await _context.AtivosFinanceiros
@@ -39,11 +31,8 @@ public class AdminController : ControllerBase
         return Ok(new
         {
             TotalUtilizadores = totalUtilizadores,
-            TotalClientes = totalClientes,
             TotalAtivos = totalAtivos,
             AtivosPorTipo = ativosPorTipo
         });
     }
-
-
 }

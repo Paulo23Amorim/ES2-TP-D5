@@ -36,8 +36,8 @@ public class ImovelArrendadoDTO
 {
     public Guid AtivoId { get; set; }
     public string Localizacao { get; set; } = string.Empty;
-    public decimal Valor { get; set; }
-    public decimal? Renda { get; set; }
+    public decimal ValorImovel { get; set; }
+    public decimal? ValorRenda { get; set; }
     public decimal? Condominio { get; set; }
     public decimal? Despesas { get; set; }
 }

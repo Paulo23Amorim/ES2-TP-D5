@@ -1,0 +1,62 @@
+@page "/dashboardCliente"
+@attribute [Authorize(Roles = "Utilizador")]
+@inject HttpClient Http
+
+<h3 class="mb-4">Relatório de Impostos por Ativo</h3>
+
+<div class="row mb-3">
+    <div class="col-md-3">
+        <label>Data Início</label>
+        <input type="date" class="form-control" @bind="dataInicio" />
+    </div>
+    <div class="col-md-3">
+        <label>Data Fim</label>
+        <input type="date" class="form-control" @bind="dataFim" />
+    </div>
+    <div class="col-md-3 align-self-end">
+        <button class="btn btn-primary" @onclick="ObterRelatorio">Gerar</button>
+    </div>
+</div>
+
+@if (relatorio is not null)
+{
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Ativo</th>
+            <th>Mês</th>
+            <th>Total Impostos (€)</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in relatorio)
+        {
+            <tr>
+                <td>@item.Ativo</td>
+                <td>@item.Mes</td>
+                <td>@item.Total.ToString("F2")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private DateTime dataInicio = DateTime.Now.AddMonths(-6);
+    private DateTime dataFim = DateTime.Now;
+
+    private List<RelatorioImposto>? relatorio;
+
+    public class RelatorioImposto
+    {
+        public string Ativo { get; set; } = "";
+        public string Mes { get; set; } = "";
+        public decimal Total { get; set; }
+    }
+
+    private async Task ObterRelatorio()
+    {
+        var url = $"api/dashboard/impostos?dataInicio={dataInicio:yyyy-MM-dd}&dataFim={dataFim:yyyy-MM-dd}";
+        relatorio = await Http.GetFromJsonAsync<List<RelatorioImposto>>(url);
+    }
+}

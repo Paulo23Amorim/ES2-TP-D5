@@ -19,15 +19,23 @@ public class AtivoFinanceiroController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<AtivoFinanceiro>>> GetAtivosFinanceiros()
-    {
-        return await _context.AtivosFinanceiros
-            .Include(a => a.DepositoPrazo)
-            .Include(a => a.FundoInvestimento)
-            .Include(a => a.ImovelArrendado)
-            .ToListAsync();
-    }
+[HttpGet]
+[Authorize]
+public async Task<ActionResult<IEnumerable<AtivoFinanceiro>>> GetAtivosFinanceiros()
+{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    if (string.IsNullOrEmpty(userId))
+        return Unauthorized();
+
+    return await _context.AtivosFinanceiros
+        .Include(a => a.DepositoPrazo)
+        .Include(a => a.FundoInvestimento)
+        .Include(a => a.ImovelArrendado)
+        .Where(a => a.UtilizadorId.ToString() == userId)
+        .ToListAsync();
+}
+
 
     [HttpGet("{id}")]
     public async Task<ActionResult<AtivoFinanceiro>> GetAtivoFinanceiro(Guid id)
@@ -42,7 +50,7 @@ public class AtivoFinanceiroController : ControllerBase
     }
 
     [HttpPost("novo")]
-    [Authorize(Roles = "Admin,UserManager")]
+    [Authorize(Roles = "Admin,UserManager,Utilizador")]
     public async Task<IActionResult> CriarComDto([FromBody] AtivoFinanceiroNovoDTO dto)
     {
         if (!ModelState.IsValid)
@@ -110,8 +118,8 @@ public class AtivoFinanceiroController : ControllerBase
                     {
                         Id = Guid.NewGuid(),
                         Localizacao = dto.Imovel.Localizacao,
-                        ValorImovel = dto.Imovel.Valor,
-                        ValorRenda = dto.Imovel.Renda,
+                        ValorImovel = dto.Imovel.ValorImovel,
+                        ValorRenda = dto.Imovel.ValorRenda,
                         ValorCondominio = dto.Imovel.Condominio,
                         DespesasAnuais = dto.Imovel.Despesas,
                         AtivoId = ativo.Id,
