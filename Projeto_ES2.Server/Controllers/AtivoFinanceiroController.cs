@@ -60,7 +60,7 @@ public class AtivoFinanceiroController : ControllerBase
             .Include(a => a.ImovelArrendado)
             .FirstOrDefaultAsync(a => a.Id == id);
 
-        return ativo == null ? NotFound() : ativo;
+        return ativo == null ? NotFound() : Ok(ativo);
     }
 
     [HttpPost("novo")]
