@@ -62,8 +62,8 @@ public class ImovelArrendadoController : ControllerBase
             Id = Guid.NewGuid(), // Gera novo ID
             AtivoFinanceiro = ativoFinanceiro,
             Localizacao = imovelDto.Localizacao,
-            ValorImovel = imovelDto.Valor,
-            ValorRenda = imovelDto.Renda,
+            ValorImovel = imovelDto.ValorImovel,
+            ValorRenda = imovelDto.ValorRenda,
             ValorCondominio = imovelDto.Condominio,
             DespesasAnuais = imovelDto.Despesas
         };
@@ -89,10 +89,10 @@ public class ImovelArrendadoController : ControllerBase
 
         // Mapeamento correto das propriedades
         imovel.Localizacao = imovelDto.Localizacao;
-        imovel.ValorImovel = imovelDto.Valor;
+        imovel.ValorImovel = imovelDto.ValorImovel;
     
         // Mapeamento dos campos nullable com nomes diferentes
-        imovel.ValorRenda = imovelDto.Renda;
+        imovel.ValorRenda = imovelDto.ValorRenda;
         imovel.ValorCondominio = imovelDto.Condominio;
         imovel.DespesasAnuais = imovelDto.Despesas;
 
