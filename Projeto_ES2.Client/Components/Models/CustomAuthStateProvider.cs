@@ -19,25 +19,21 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        // Tenta obter o token armazenado localmente
         var token = await _localStorage.GetItemAsync<string>("authToken");
 
         if (string.IsNullOrWhiteSpace(token))
         {
-            // Não autenticado
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
         }
 
         try
         {
-            // Autenticado: cria ClaimsPrincipal a partir do token
             var identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
             var user = new ClaimsPrincipal(identity);
             return new AuthenticationState(user);
         }
         catch
         {
-            // Se der erro ao parsear o token, considera como não autenticado
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
         }
     }
@@ -65,7 +61,6 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 
         if (keyValuePairs != null)
         {
-            // Trata os roles separadamente
             if (keyValuePairs.TryGetValue("role", out var roles))
             {
                 if (roles is JsonElement jsonElement && jsonElement.ValueKind == JsonValueKind.Array)
@@ -81,7 +76,6 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
                 }
             }
 
-            // Adiciona os demais claims
             claims.AddRange(keyValuePairs
                 .Where(kvp => kvp.Key != "role")
                 .Select(kvp => new Claim(kvp.Key, kvp.Value?.ToString() ?? string.Empty)));

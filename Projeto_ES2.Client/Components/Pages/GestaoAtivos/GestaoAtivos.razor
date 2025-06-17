@@ -30,6 +30,20 @@
                 </AuthorizeView>
             </div>
 
+            <div class="d-flex mb-3">
+                <InputText class="form-control" @bind-Value="filtroNome" placeholder="Pesquisar por nome" />
+                <InputNumber @bind-Value="filtroMontanteMin" class="form-control me-2" placeholder="Montante Mínimo" />
+                <InputNumber @bind-Value="filtroMontanteMax" class="form-control me-2" placeholder="Montante Máximo" />
+                <InputSelect class="form-select" @bind-Value="filtroTipo">
+                    <option value="">Todos os Tipos</option>
+                    <option value="@TipoAtivoFinanceiro.DepositoPrazo">Depósito a Prazo</option>
+                    <option value="@TipoAtivoFinanceiro.FundoInvestimento">Fundo de Investimento</option>
+                    <option value="@TipoAtivoFinanceiro.ImovelArrendado">Imóvel Arrendado</option>
+                </InputSelect>
+                <button class="btn btn-primary" @onclick="AplicarFiltros">Filtrar</button>
+            </div>
+
+
             @if (isLoading)
             {
                 <div class="text-center">
@@ -55,7 +69,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var ativo in ativos)
+                            @foreach (var ativo in ativosFiltrados)
                             {
                                 <tr>
                                     <td>@ativo.Nome</td>
@@ -71,9 +85,9 @@
                                             <i class="bi bi-eye"></i> Detalhes
                                         </button>
 
-                                        <AuthorizeView Roles="Admin,UserManager" Context="editAuth">
+                                        <AuthorizeView Roles="Admin,Utilizador" Context="editAuth">
                                             <Authorized Context="editContent">
-                                                <button class="btn btn-sm btn-warning me-2" @onclick="() => EditAtivo(ativo.Id)">
+                                                <button class="btn btn-sm btn-warning me-2" @onclick="() => EditarAtivo(ativo.Id)">
                                                     <i class="bi bi-pencil"></i> Editar
                                                 </button>
                                             </Authorized>
@@ -179,11 +193,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Valor do Imóvel:</label>
-                                            <InputNumber class="form-control" @bind-Value="NovoAtivo.Imovel.Valor" />
+                                            <InputNumber class="form-control" @bind-Value="NovoAtivo.Imovel.ValorImovel" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Valor da Renda:</label>
-                                            <InputNumber class="form-control" @bind-Value="NovoAtivo.Imovel.Renda" />
+                                            <InputNumber class="form-control" @bind-Value="NovoAtivo.Imovel.ValorRenda" />
                                         </div>
                                     </div>
                                 }
@@ -202,6 +216,82 @@
                 </div>
             </div>
         }
+
+        @if (showEditModal)
+        {
+        <div class="modal show d-block" style="background-color: rgba(0,0,0,0.5)">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Ativo</h5>
+                        <button type="button" class="btn-close" @onclick="() => showEditModal = false"></button>
+                    </div>
+                    <div class="modal-body">
+                        <EditForm Model="AtivoEmEdicao" OnValidSubmit="GuardarEdicaoAsync">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary />
+
+                            <div class="mb-3">
+                                <label>Nome:</label>
+                                <InputText class="form-control" @bind-Value="AtivoEmEdicao.Nome" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Data Fim:</label>
+                                <InputDate class="form-control" @bind-Value="AtivoEmEdicao.DataFim" />
+                            </div>
+
+                            @if (AtivoEmEdicao.Tipo == TipoAtivoFinanceiro.FundoInvestimento)
+                            {
+                            <div class="border p-3">
+                                <h6>Fundo de Investimento</h6>
+                                <label>Montante Investido:</label>
+                                <InputNumber class="form-control" @bind-Value="AtivoEmEdicao.FundoInvestimento.MontanteInvestido" />
+
+                                <label>Taxa de Juro Padrão:</label>
+                                <InputNumber class="form-control" step="0.01" @bind-Value="AtivoEmEdicao.FundoInvestimento.TaxaJuroPadrao" />
+                            </div>
+                            }
+                            else if (AtivoEmEdicao.Tipo == TipoAtivoFinanceiro.DepositoPrazo)
+                            {
+                            <div class="border p-3">
+                                <h6>Depósito a Prazo</h6>
+                                <label>Valor Inicial:</label>
+                                <InputNumber class="form-control" @bind-Value="AtivoEmEdicao.DepositoPrazo.ValorInicial" />
+
+                                <label>Banco:</label>
+                                <InputText class="form-control" @bind-Value="AtivoEmEdicao.DepositoPrazo.Banco" />
+
+                                <label>Taxa Juro Anual:</label>
+                                <InputNumber class="form-control" step="0.01" @bind-Value="AtivoEmEdicao.DepositoPrazo.TaxaJuroAnual" />
+                            </div>
+                            }
+                            else if (AtivoEmEdicao.Tipo == TipoAtivoFinanceiro.ImovelArrendado)
+                            {
+                            <div class="border p-3">
+                                <h6>Imóvel Arrendado</h6>
+                                <label>Localização:</label>
+                                <InputText class="form-control" @bind-Value="AtivoEmEdicao.ImovelArrendado.Localizacao" />
+
+                                <label>Valor Imóvel:</label>
+                                <InputNumber class="form-control" @bind-Value="AtivoEmEdicao.ImovelArrendado.ValorImovel" />
+
+                                <label>Valor da Renda:</label>
+                                <InputNumber class="form-control" @bind-Value="AtivoEmEdicao.ImovelArrendado.ValorRenda" />
+                            </div>
+                            }
+
+                            <div class="modal-footer mt-3">
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                                <button type="button" class="btn btn-secondary" @onclick="() => showEditModal = false">Cancelar</button>
+                            </div>
+                        </EditForm>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
     </Authorized>
     <NotAuthorized>
         <div class="alert alert-warning mt-5 text-center">
@@ -216,6 +306,40 @@
     private bool isLoading = true;
     private bool showCreateModal = false;
 
+    private string filtroNome = string.Empty;
+    private decimal? filtroMontanteMin;
+    private decimal? filtroMontanteMax;
+    private TipoAtivoFinanceiro? filtroTipo = null;
+
+    private List<AtivoFinanceiroDTO> ativosFiltrados = new();
+    
+    private void AplicarFiltros()
+    {
+        ativosFiltrados = ativos
+            .Where(a => string.IsNullOrWhiteSpace(filtroNome) || a.Nome.Contains(filtroNome, StringComparison.OrdinalIgnoreCase))
+            .Where(a => !filtroTipo.HasValue || a.Tipo == filtroTipo)
+            .Where(a =>
+                (
+                    a.Tipo == TipoAtivoFinanceiro.FundoInvestimento &&
+                    a.FundoInvestimento != null &&
+                    (!filtroMontanteMin.HasValue || a.FundoInvestimento.MontanteInvestido >= filtroMontanteMin) &&
+                    (!filtroMontanteMax.HasValue || a.FundoInvestimento.MontanteInvestido <= filtroMontanteMax)
+                )
+                ||
+                (
+                    a.Tipo == TipoAtivoFinanceiro.DepositoPrazo &&
+                    a.DepositoPrazo != null &&
+                    (!filtroMontanteMin.HasValue || a.DepositoPrazo.ValorInicial >= filtroMontanteMin) &&
+                    (!filtroMontanteMax.HasValue || a.DepositoPrazo.ValorInicial <= filtroMontanteMax)
+                )
+                ||
+                (
+                    a.Tipo == TipoAtivoFinanceiro.ImovelArrendado
+                )
+            )
+            .ToList();
+    }
+    
     private AtivoFinanceiroNovoDTO NovoAtivo = new()
     {
         Deposito = new DepositoPrazoDTO { Titulares = "Titular Principal" },
@@ -227,6 +351,7 @@
     protected override async Task OnInitializedAsync()
     {
         await LoadAtivos();
+        AplicarFiltros();
     }
 
     private async Task LoadAtivos()
@@ -271,6 +396,7 @@
         finally
         {
             isLoading = false;
+            AplicarFiltros();
             StateHasChanged();
         }
     }
@@ -302,6 +428,7 @@
             await JS.InvokeVoidAsync("alert", $"Erro ao criar ativo: {ex.Message}");
         }
     }
+    
 
     private async Task DeleteAtivoFinanceiro(Guid id)
     {
@@ -338,10 +465,36 @@
         Navigation.NavigateTo($"/ativos/detalhes/{id}");
     }
 
-    private void EditAtivo(Guid id)
+    private AtivoFinanceiroDTO AtivoEmEdicao;
+    private bool showEditModal = false;
+
+    private async Task EditarAtivo(Guid id)
     {
-        Navigation.NavigateTo($"/ativos/editar/{id}");
+        var response = await Http.GetFromJsonAsync<AtivoFinanceiroDTO>($"api/AtivoFinanceiro/{id}");
+        if (response != null)
+        {
+            AtivoEmEdicao = response;
+            showEditModal = true;
+        }
     }
+    
+    private async Task GuardarEdicaoAsync()
+    {
+        var response = await Http.PutAsJsonAsync($"api/AtivoFinanceiro/{AtivoEmEdicao.Id}", AtivoEmEdicao);
+        if (response.IsSuccessStatusCode)
+        {
+            showEditModal = false;
+            await LoadAtivos();
+        }
+        else
+        {
+            var erro = await response.Content.ReadAsStringAsync();
+            Console.Error.WriteLine("Erro ao editar: " + erro);
+            await JS.InvokeVoidAsync("alert", "Erro ao editar ativo.");
+        }
+    }
+
+
 
     private void OpenCreateModal() => showCreateModal = true;
 
@@ -383,8 +536,8 @@
                 $"Montante: {ativo.FundoInvestimento.MontanteInvestido.ToString("C2", culture)}",
 
             TipoAtivoFinanceiro.ImovelArrendado when ativo.ImovelArrendado != null =>
-                $"Valor: {ativo.ImovelArrendado.Valor.ToString("C2", culture)} | " +
-                $"Renda: {(ativo.ImovelArrendado.Renda?.ToString("C2", culture) ?? "N/A")}/mês",
+                $"Valor: {ativo.ImovelArrendado.ValorImovel.ToString("C2", culture)} | " +
+                $"Renda: {(ativo.ImovelArrendado.ValorRenda?.ToString("C2", culture) ?? "N/A")}/mês",
 
             _ => "Valor não disponível"
         };

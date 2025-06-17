@@ -31,7 +31,6 @@ public class AtivoFinanceiroController : ControllerBase
         if (utilizador == null)
             return NotFound("Utilizador não encontrado.");
 
-        // INICIALIZA a query com o Include antes do Where
         var query = _context.AtivosFinanceiros
             .Include(a => a.DepositoPrazo)
             .Include(a => a.FundoInvestimento)
@@ -60,7 +59,7 @@ public class AtivoFinanceiroController : ControllerBase
             .Include(a => a.ImovelArrendado)
             .FirstOrDefaultAsync(a => a.Id == id);
 
-        return ativo == null ? NotFound() : ativo;
+        return ativo == null ? NotFound() : Ok(ativo);
     }
 
     [HttpPost("novo")]
@@ -75,14 +74,12 @@ public class AtivoFinanceiroController : ControllerBase
 
         Guid utilizadorId;
 
-        // Se o DTO vier com UtilizadorId (ex: Admin a criar para alguém), usa esse
         if (dto.UtilizadorId.HasValue)
         {
             utilizadorId = dto.UtilizadorId.Value;
         }
         else
         {
-            // Caso contrário, usa o ID do token JWT
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) 
                               ?? User.FindFirst("sub") 
                               ?? User.FindFirst("id");
@@ -144,8 +141,8 @@ public class AtivoFinanceiroController : ControllerBase
                     {
                         Id = Guid.NewGuid(),
                         Localizacao = dto.Imovel.Localizacao,
-                        ValorImovel = dto.Imovel.Valor,
-                        ValorRenda = dto.Imovel.Renda,
+                        ValorImovel = dto.Imovel.ValorImovel,
+                        ValorRenda = dto.Imovel.ValorRenda,
                         ValorCondominio = dto.Imovel.Condominio,
                         DespesasAnuais = dto.Imovel.Despesas,
                         AtivoId = ativo.Id,
@@ -162,26 +159,58 @@ public class AtivoFinanceiroController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAtivoFinanceiro(Guid id, AtivoFinanceiro ativo)
+[Authorize]
+public async Task<IActionResult> UpdateAtivoFinanceiro(Guid id, [FromBody] AtivoFinanceiro ativo)
+{
+    if (id != ativo.Id)
+        return BadRequest("ID inválido");
+
+    var existente = await _context.AtivosFinanceiros
+        .Include(a => a.DepositoPrazo)
+        .Include(a => a.FundoInvestimento)
+        .Include(a => a.ImovelArrendado)
+        .FirstOrDefaultAsync(a => a.Id == id);
+
+    if (existente == null)
+        return NotFound();
+
+    existente.Nome = ativo.Nome;
+    existente.DataFim = ativo.DataFim;
+    existente.Imposto = ativo.Imposto;
+
+    switch (ativo.Tipo)
     {
-        if (id != ativo.Id || !ModelState.IsValid)
-            return BadRequest();
+        case TipoAtivoFinanceiro.FundoInvestimento:
+            if (ativo.FundoInvestimento != null && existente.FundoInvestimento != null)
+            {
+                existente.FundoInvestimento.MontanteInvestido = ativo.FundoInvestimento.MontanteInvestido;
+                existente.FundoInvestimento.TaxaJuroPadrao = ativo.FundoInvestimento.TaxaJuroPadrao;
+            }
+            break;
 
-        _context.Entry(ativo).State = EntityState.Modified;
+        case TipoAtivoFinanceiro.DepositoPrazo:
+            if (ativo.DepositoPrazo != null && existente.DepositoPrazo != null)
+            {
+                existente.DepositoPrazo.ValorInicial = ativo.DepositoPrazo.ValorInicial;
+                existente.DepositoPrazo.TaxaJuroAnual = ativo.DepositoPrazo.TaxaJuroAnual;
+                existente.DepositoPrazo.Banco = ativo.DepositoPrazo.Banco;
+            }
+            break;
 
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!AtivoFinanceiroExists(id))
-                return NotFound();
-            throw;
-        }
-
-        return NoContent();
+        case TipoAtivoFinanceiro.ImovelArrendado:
+            if (ativo.ImovelArrendado != null && existente.ImovelArrendado != null)
+            {
+                existente.ImovelArrendado.Localizacao = ativo.ImovelArrendado.Localizacao;
+                existente.ImovelArrendado.ValorImovel = ativo.ImovelArrendado.ValorImovel;
+                existente.ImovelArrendado.ValorRenda = ativo.ImovelArrendado.ValorRenda;
+            }
+            break;
     }
+
+    await _context.SaveChangesAsync();
+    return NoContent();
+}
+
 
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
