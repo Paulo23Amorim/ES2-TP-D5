@@ -1,6 +1,6 @@
 @page "/admin/dashboard"
 @using Projeto_ES2.Client.Services
-@attribute [Authorize(Roles = "Utilizador,Admin")]
+@attribute [Authorize(Roles = "Admin")]
 @inject Projeto_ES2.Client.Services.DashboardService DashboardService
 
 <h3 class="mb-4">Dashboard de Estatísticas</h3>
@@ -40,6 +40,16 @@ else
             </li>
         }
     </ul>
+
+
+    @if (stats.TotalAtivos > 5)
+    {
+        <p class="text-success">O número de ativos está a crescer bem!</p>
+    }
+    else
+    {
+        <p class="text-warning">Atenção: poucos ativos registados.</p>
+    }
 }
 
 @code {

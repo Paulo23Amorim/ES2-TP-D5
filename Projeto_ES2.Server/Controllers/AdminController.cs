@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Projeto_ES2.Server.Data;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using Projeto_ES2.Client.Components.Models;
+using Projeto_ES2.Server.Data;
 
 
 namespace Projeto_ES2.Server.Controllers;
@@ -24,6 +26,11 @@ public class AdminController : ControllerBase
     public async Task<IActionResult> GetDashboardStats()
     {
         var totalUtilizadores = await _context.Utilizadores.CountAsync();
+
+        var totalClientes = await _context.Utilizadores
+            .Where(u => u.TipoUtilizador == TipoUtilizador.Utilizador)
+            .CountAsync();
+        
         var totalAtivos = await _context.AtivosFinanceiros.CountAsync();
 
         var ativosPorTipo = await _context.AtivosFinanceiros
@@ -34,6 +41,8 @@ public class AdminController : ControllerBase
         return Ok(new
         {
             TotalUtilizadores = totalUtilizadores,
+
+            TotalClientes = totalClientes,
             TotalAtivos = totalAtivos,
             AtivosPorTipo = ativosPorTipo
         });

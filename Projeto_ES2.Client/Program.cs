@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Components.Authorization;
 using System;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Projeto_ES2.Client.Services;
 using Projeto_ES2.Client.Interceptors;
+
+
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -41,9 +44,10 @@ builder.Services.AddScoped<AuthTokenInterceptor>();
 // 4) HttpClient com interceptor
 builder.Services.AddHttpClient("AuthHttpClient", client =>
     {
-        client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+        client.BaseAddress = new Uri("http://localhost:7010/"); // <- porta do Projeto_ES2.Server
     })
     .AddHttpMessageHandler<AuthTokenInterceptor>();
+
 
 // 5) Injeta esse client como padrão
 builder.Services.AddScoped(sp =>
@@ -52,5 +56,8 @@ builder.Services.AddScoped(sp =>
 
 // 6) Serviço HTTP que usa jsonOptions
 builder.Services.AddScoped<HttpClientService>();
+builder.Services.AddScoped<DashboardService>();
+;
+
 
 await builder.Build().RunAsync();

@@ -13,6 +13,7 @@ public class Utilizador
     
     [Column("password")]
     public string PasswordHash { get; set; } = string.Empty;
+
     
     public TipoUtilizador TipoUtilizador { get; set; }
     
