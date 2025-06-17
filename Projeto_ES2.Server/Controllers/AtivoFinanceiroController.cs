@@ -31,7 +31,6 @@ public class AtivoFinanceiroController : ControllerBase
         if (utilizador == null)
             return NotFound("Utilizador não encontrado.");
 
-        // INICIALIZA a query com o Include antes do Where
         var query = _context.AtivosFinanceiros
             .Include(a => a.DepositoPrazo)
             .Include(a => a.FundoInvestimento)
@@ -75,14 +74,12 @@ public class AtivoFinanceiroController : ControllerBase
 
         Guid utilizadorId;
 
-        // Se o DTO vier com UtilizadorId (ex: Admin a criar para alguém), usa esse
         if (dto.UtilizadorId.HasValue)
         {
             utilizadorId = dto.UtilizadorId.Value;
         }
         else
         {
-            // Caso contrário, usa o ID do token JWT
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier) 
                               ?? User.FindFirst("sub") 
                               ?? User.FindFirst("id");
